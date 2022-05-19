@@ -1,5 +1,5 @@
-// var app = angular.module('/Framework_PHP_OO_MVC_AngularJS', ['ngRoute', 'toastr', 'ui.bootstrap']);
-var app = angular.module('/Framework_PHP_OO_MVC_AngularJS', ['ngRoute', 'toastr']);
+var app = angular.module('/Framework_PHP_OO_MVC_AngularJS', ['ngRoute', 'toastr', 'ui.bootstrap']);
+// var app = angular.module('/Framework_PHP_OO_MVC_AngularJS', ['ngRoute', 'toastr']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider

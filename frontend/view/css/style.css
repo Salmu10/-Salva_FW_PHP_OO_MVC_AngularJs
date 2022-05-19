@@ -248,24 +248,6 @@ label.etiquetas {
     margin-top: 2%;
 }
 
-
-/* Carrusel */
-
-.glider-dot {
-    display: block; 
-    cursor: pointer; 
-    color: rgb(24, 24, 24); 
-    background: #ccc;
-    width: 40px;
-    height: 10px;
-    margin: 10px;
-}
-
-.glider-dot.active {
-    background: black;
-    opacity: 0.7;
-}
-
 /* Carrusel */
 
 .carrusel {
@@ -274,10 +256,41 @@ label.etiquetas {
 
 .carrusel_elements {
     display: block;
-    float: center;
     text-align: center;
     /* margin-right: 2.1%;
     z-index: 0; */
+}
+
+.carrusel_img{
+    display: block;
+    margin: auto;
+}
+
+li.ng-scope {
+    /* margin-top: 20px; */
+    background-color: #333;
+    border: 1px solid #333;
+}
+
+li.ng-scope.active {
+    background-color: red;
+    border: 1px solid red;
+}
+
+.icon-next, .icon-prev{
+    color: black;
+}
+
+.carousel-control.right,  .carousel-control.left {
+    background-image: none;
+}
+
+.carousel-control.right:hover {
+    background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);;
+}
+
+.carousel-control.left:hover {
+    background-image: -webkit-linear-gradient(right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);;
 }
 
 /* Categories */

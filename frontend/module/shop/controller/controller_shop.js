@@ -65,16 +65,15 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
 
         console.log(filter_type.length);
         if(filter_type.length == 0){
-            console.log('pagination');
-            // $scope.pagination(list);
+            $scope.pagination(list);
         }else{
             services_shop.filter_search(filter_type);
         }
     }
 
-    // $scope.pagination = function(products) {
-    //     services_shop.pagination(products);
-    // }
+    $scope.pagination = function(cars) {
+        services_shop.pagination(cars);
+    }
 
     // $scope.change_page = function(page) {
     //     services_shop.change_page(page); 
@@ -100,8 +99,8 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
             services_shop.filter_search(local);
         }else{
             // console.log(list);
-            $scope.list = list;
-            // $scope.pagination(list);
+            // $scope.list = list;
+            $scope.pagination(list);
         }
     }else if(path[1] === 'car'){
         $scope.show_list = false;

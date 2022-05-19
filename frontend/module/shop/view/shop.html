@@ -42,6 +42,7 @@
         </div>
         <div class="maps_content" id="maps"></div>
     </div>
+
     <div class="shop_details" ng-show="show_details">
         <div class="shop_details_content">
             <div class='details_box'>
@@ -84,5 +85,12 @@
             </div>
         </div>
     </div>
-    <div id="pagination"></div> 
+    <div id="pagination">
+        <ul style="display: flex; align-items: center; justify-content: center">
+            <li><a href="" ng-click="change_page(current_page - 1)" ng-show="show1">Previous</a></li>
+            <li><a href="" ng-repeat="page in pages" ng-click="change_page(page)">{{page}}</a></li>
+            <li><a href="" ng-click="change_page(current_page + 1)" ng-show="show2">Next</a></li>
+        </ul>
+    
+    </div> 
 </div>
