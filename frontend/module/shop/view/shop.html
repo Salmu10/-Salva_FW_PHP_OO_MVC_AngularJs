@@ -46,9 +46,18 @@
     <div class="shop_details" ng-show="show_details">
         <div class="shop_details_content">
             <div class='details_box'>
-                <div class='details_content' ng-repeat="car in list">
-                    <div class='carrusel_details'></div>
-                    <div class='car_details'>
+                <div class='details_content'>
+                    <div class='carrusel_details' ng-repeat="imgs in images">
+                        <h2>{{imgs.image_name}}</h2>
+                        <div class="carousel_details_elements" ng-repeat="imgs in images">
+                            <carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                                <slide ng-repeat="imgs in images">
+                                    <img class='carousel_details_img' src='http://localhost/Framework_PHP_OO_MVC_AngularJS/frontend/{{imgs.image_name}}'>
+                                </slide>
+                            </carousel>
+                        </div>
+                    </div>
+                    <div class='car_details' ng-repeat="car in list">
                         <div class='table_details'>
                             <table class='details_table'>
                                 <tr><th class='titles' colspan='2'>{{car.brand_name}}  {{car.model}}</th></tr>
@@ -86,11 +95,10 @@
         </div>
     </div>
     <div id="pagination">
-        <ul style="display: flex; align-items: center; justify-content: center">
-            <li><a href="" ng-click="change_page(current_page - 1)" ng-show="show1">Previous</a></li>
-            <li><a href="" ng-repeat="page in pages" ng-click="change_page(page)">{{page}}</a></li>
-            <li><a href="" ng-click="change_page(current_page + 1)" ng-show="show2">Next</a></li>
-        </ul>
-    
+        
+            <a href="" ng-click="change_page(current_page - 1)" ng-show="show1">Previous</a>
+            <a href="" ng-repeat="page in pages" ng-click="change_page(page)">{{page}}</a>
+            <a href="" ng-click="change_page(current_page + 1)" ng-show="show2">Next</a>
+        
     </div> 
 </div>

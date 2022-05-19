@@ -37,7 +37,7 @@
 		// }
 		
 		public function get_filters_search_BLL($args) {
-			return $this -> dao -> filters_2($this->db, $args[0]);
+			return $this -> dao -> filters_2($this->db, json_decode($args[0]));
 		}
 
 		public function get_most_visit_BLL($args) {

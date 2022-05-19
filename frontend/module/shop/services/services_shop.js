@@ -2,12 +2,14 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
     let service = {details: details, filter_search: filter_search, pagination: pagination, change_page: change_page};
     return service;
 
-    function filter_search(filters) {
+    function filter_search() {
+        var filters = localStorage.getItem('filters');
+        console.log(filters);
         // services.post('shop', 'filters_search', {orderby: "asc", total_prod: 5, items_page: 5, filters: filters})
         services.post('shop', 'filters_search', {filters: filters})
         .then(function(response) {
             console.log(response);
-        //    pagination(response);
+           pagination(response);
         }, function(error) {
             console.log(error);
         });
@@ -16,9 +18,13 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
     function details(id) {
         services.post('shop', 'details_carousel', {id: id})
         .then(function(response) {
-            console.log(response[1]);
+            $rootScope.myInterval = 5000;
+            $rootScope.noWrapSlides = false;
+            $rootScope.active = 0;
             $rootScope.list = response[0];
-            // $rootScope.images = response[1];
+            $rootScope.images = response[1];
+            console.log($rootScope.images);
+            console.log($rootScope.list);
             // load_favs();
         }, function(error) {
             console.log(error);
@@ -26,7 +32,6 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
     }
 
     function pagination(cars) {
-        console.log(cars);
         $rootScope.cars = cars;
         $rootScope.page = 1;
         $rootScope.total_page = Math.ceil(cars.length/5);

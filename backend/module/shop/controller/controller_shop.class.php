@@ -16,8 +16,8 @@
         
         function filters_search() {
             // echo json_encode(common::load_model('shop_model', 'get_filters_search', [$_POST['orderby'], $_POST['total_prod'],$_POST['items_page'], $_POST['filters']]));
-            echo json_encode($_POST['filters']);
-            // echo json_encode(common::load_model('shop_model', 'get_filters_search', $_POST['filters']));
+            // echo json_encode($_POST['filters']);
+            echo json_encode(common::load_model('shop_model', 'get_filters_search', [$_POST['filters']]));
         }
 
         function most_visit() {

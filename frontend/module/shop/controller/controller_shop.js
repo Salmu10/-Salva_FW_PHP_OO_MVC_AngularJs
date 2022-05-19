@@ -93,10 +93,7 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
         $scope.show_list = true;
         $scope.show_details = false;
         if(localStorage.filters){
-            var local = JSON.parse(localStorage.filters);
-            console.log(local);
-            localStorage.removeItem('filters');
-            services_shop.filter_search(local);
+            services_shop.filter_search();
         }else{
             // console.log(list);
             // $scope.list = list;

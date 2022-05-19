@@ -3,7 +3,7 @@
     <h1 data-tr="Brands">BRANDS</h2>
     <div class="carrusel_container">
         <div class="carrusel_list">
-            <div class="carrusel_elements" id='{{carrusel.brand_name}}' >
+            <div class="carrusel_elements" id='{{carrusel.brand_name}}'>
                 <carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
                     <slide ng-repeat="carrusel in slide" ng-click="redirect_shop('brand_name', carrusel.brand_name)">
                         <img class='carrusel_img' src='http://localhost/Framework_PHP_OO_MVC_AngularJS/frontend/{{carrusel.brand_img}}'>
@@ -21,7 +21,7 @@
     <br>
     <div class="container" id="features-wrapper-container">
         <div class="row" id="cat">
-            <div class="category_elements" id='{{category.cod_category}}' ng-click="redirect_shop('category_name', category.cod_category)" ng-repeat="category in categoria">
+            <div class="category_elements" id='{{category.cod_category}}' ng-click="redirect_shop('category_name', category.category_name)" ng-repeat="category in categoria">
                 <div class='col-4 col-12-medium'>
                     <section class='box feature'>
                         <img src='http://localhost/Framework_PHP_OO_MVC_AngularJS/frontend/{{category.category_img}}' id='{{category.cod_category}}'> 
