@@ -1,0 +1,69 @@
+<!-- <link rel = "stylesheet" href = "//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<!-- CARRUSEL -->
+<div class="carrusel">
+    <h1 data-tr="Brands"></h2>
+    <div class="carrusel_container">
+        <div class="carrusel_list">
+            <div class="carrusel_elements" id='{{carrusel.brand_name}}' ng-click="redirect_shop('brand_name', carrusel.brand_name)" ng-repeat="carrusel in slide">
+                <!-- <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides"> -->
+                    <!-- <uib-slide ng-repeat="carrusel in slide"> -->
+                        <img class='carrusel_img' src='http://localhost/Framework_PHP_OO_MVC_AngularJS/frontend/{{carrusel.brand_img}}' alt=''>
+                    <!-- </uib-slide> -->
+                <!-- </uib-carousel> -->
+            </div>
+        </div>
+    </div>
+    <div class="carrusel_indicator"></div>
+</div>
+
+<!-- CATEGORIAS -->
+<div id="features-wrapper">
+    <h1 data-tr="Categories"></h2>
+    <br>
+    <div class="container" id="features-wrapper-container">
+        <div class="row" id="cat">
+            <div class="category_elements" id='{{category.cod_category}}' ng-click="redirect_shop('category_name', category.cod_category)" ng-repeat="category in categoria">
+                <div class='col-4 col-12-medium'>
+                    <section class='box feature'>
+                        <img src='http://localhost/Framework_PHP_OO_MVC_AngularJS/frontend/{{category.category_img}}' id='{{category.cod_category}}'> 
+                        <div class='inner'>
+                            <h2 class='category_title'>{{category.category_name}}</h2>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>
+
+<br>
+<br>
+
+<!-- Tipos -->
+<div class="types">
+    <h1 data-tr="Types"></h2>
+    <div class="container_cards">
+        <div class="card" id='{{type.type_name}}' ng-click="redirect_shop('type_name', type.type_name)" ng-repeat="type in tipo">
+            <div class='face face1'>
+                <div class='content'>
+                    <img src='http://localhost/Framework_PHP_OO_MVC_AngularJS/frontend/{{type.type_img}}'>
+                </div>
+            </div>
+            <div class='face face2'>
+                <div class='content'>
+                    <h2>{{type.type_name}}</h2>
+                </div> 
+            </div> 
+        </div>
+    </div>
+</div>
+
+<!-- News -->
+<!-- <div class="news">
+    <h1 data-tr="News"></h2>
+    <div class="news_container" id="news_container"></div>
+    <div class="no_more" id="no_more"></div>
+    <div class="load_more">
+        <button class="load_more_button" id="load_more_button">Load More</button>
+    </div>
+</div> -->

@@ -1,0 +1,50 @@
+<!-- Header -->
+<div id="header">
+	<div id="header-wrapper">
+		<header id="header" class="container">
+
+			<!-- Logo -->
+			<div id="icono">
+				<a href="?module=home&op=view"></a>
+			</div>
+
+			<!-- Nav -->
+
+			<nav id="nav">
+				<ul class="nav_list">
+					<li><a href="#/home" id="home" data-tr="Homepage">Home</a></li>
+					<li><a href="#/shop" id="shop" data-tr="Shop">Shop</a></li>
+					<li><a href="#/contact" id="contact" data-tr="Contact us">Contact us</a></li>
+					<li><a href="#/login" ng-if="menu == false" id="login" data-tr="Login">Login</a></li>
+					<li><a href="#/logout" ng-if="menu == true" id="logout" data-tr="Logout">Logout</a></li>
+				</ul>
+			</nav>
+
+            <!-- Search -->
+		
+			<div id="search">
+				<form class="search_form">
+					<select id="type_select" ng-model="selected_car_type" ng-change="click_car_brand(selected_car_type)">
+						<option value="">Car type...</option>
+						<option ng-repeat="type in car_type" value="{{type.type_name}}">{{type.type_name}}</option>
+					</select>
+
+					<select id="brand_select" ng-model="selected_car_brand">
+						<option value="">Car brand...</option>
+						<option ng-repeat="brand in car_brand" value="{{brand.brand_name}}">{{brand.brand_name}}</option>
+					</select>
+
+					<input type="text" id="autocom" ng-model="autocomplete" ng-change="click_autocomplete(selected_car_type, selected_car_brand, autocomplete)" autocomplete="off"/>
+
+					<input type="button" value="Search" id="search_button" ng-click="click_search(selected_car_type, selected_car_brand, autocomplete)"/>
+
+					<div id="search_auto" ng-click="click_search(selected_car_type, selected_car_brand, com.city)" ng-repeat="com in complete">{{com.city}}</div>
+				</form>
+			</div>
+
+		</header>
+	</div>
+</div>
+
+<div id="page_container">
+

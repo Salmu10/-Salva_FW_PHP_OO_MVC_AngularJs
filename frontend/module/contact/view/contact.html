@@ -1,0 +1,83 @@
+<div class="contact_container">
+	<form id="contact_form" name="contact_form" method="post">
+		<h1>Contact</h1>
+		<div class="contact_page">
+			<div class="name_contact">
+				<label for="contact_name" class="label">Name: </label>
+				<br>
+				<input required ng-model="contact_name" ng-pattern="regName" id="contact_name" name="contact_name" type="text" class="input">
+				<font color="red">
+					<br>
+					<!-- <span id="error_contact_name" class="error"></span> -->
+                    <span class="error" ng-show="contact_form.contact_name.$error.required && contact_form.contact_name.$touched">
+						You have to write a name. <br>
+					</span>
+					<span class="error" ng-show="contact_form.contact_name.$dirty && contact_form.contact_name.$invalid">
+						The name must be longer than 3 characters.
+					</span>
+				</font>
+			</div>
+            <div class="email_contact">
+				<label for="contact_email" class="label">Email: </label>
+				<br>
+				<input required ng-model="contact_email" ng-pattern="regEmail" id="contact_email" name="contact_email" type="text" class="input">
+				<font color="red">
+					<br>
+					<!-- <span id="error_contact_email" class="error"></span> -->
+                    <span class="error" ng-show="contact_form.contact_email.$error.required && contact_form.contact_email.$touched">
+						You have to write an email. <br>
+					</span>
+					<span class="error" ng-show="contact_form.contact_email.$dirty && contact_form.contact_email.$invalid">
+						The name must be like example@gmail.com.
+					</span>
+                </font>
+			</div>
+			<div class="contact_matter">
+				<label for="matter" class="label">Matter: </label>
+				<br>
+				<select required ng-model="matter" ng-pattern="regMatter" name="matter" id="matter">
+					<option selected>Seleccione un asunto</option>
+					<option>Problemas con la pagina</option>
+					<option>Mejoras para la pagina</option>
+					<option>Problemas con el registro</option>
+					<option>Contacto para una promoción</option>
+					<option>Otros</option>
+				</select>
+				<font color="red">
+					<br>
+					<!-- <span id="error_matter" class="error"></span> -->
+                    <span class="error" ng-show="contact_form.matter.$error.required && contact_form.matter.$touched">
+						You have to choose a matter. <br>
+					</span>
+				</font>
+			</div>
+			<div class="contact_message">
+				<label for="message" class="label">Message: </label>
+				<br>
+				<textarea required ng-model="message" ng-pattern="regMessage" rows="4" cols="50" name="message" id="message"></textarea>
+				<font color="red">
+					<br>
+					<!-- <span id="error_message" class="error"></span> -->
+                    <span class="error" ng-show="contact_form.message.$error.required && contact_form.message.$touched">
+						You have to write a message. <br>
+					</span>
+					<span class="error" ng-show="contact_form.message.$dirty && contact_form.message.$invalid">
+						The message must be longer than 15 characters.
+					</span>
+				</font>
+			</div>
+			<div class="button_contact">
+				<input ng-disabled = "contact_form.contact_name.$invalid || contact_form.contact_email.$invalid || contact_form.matter.$invalid || contact_form.message.$invalid"
+				type="button" ng-click="send_contact()" class="button" name="send_contact" id="send_contact" value="Send">
+				<font color="red">
+					<br>
+					<!-- <span id="error_message" class="error"></span> -->
+                    <span class="error" ng-show="contact_form.send_contact.$disabled">
+						You have to complete the form. <br>
+					</span>
+				</font>
+			</div>
+		</div>
+	</form>
+	
+</div>

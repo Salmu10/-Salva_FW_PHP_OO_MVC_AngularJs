@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="/Framework_PHP_OO_MVC_AngularJS" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Second Chance</title>
+
+    <!-- ANGULAR JS -->
+
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js"></script>
+
+    <!-- CONTROLLER AND SERVICES -->
+
+    <script src="frontend/router.js"></script>
+    <script src="frontend/apiconnector.js"></script>
+
+    <script type="text/javascript" src="frontend/module/home/controller/controller_home.js"></script>
+    <script type="text/javascript" src="frontend/module/shop/controller/controller_shop.js"></script>
+    <script type="text/javascript" src="frontend/module/shop/services/services_shop.js"></script>
+    <script type="text/javascript" src="frontend/module/search/services/services_search.js"></script>
+    <script type="text/javascript" src="frontend/module/contact/controller/controller_contact.js"></script>
+    
+    <!-- CSS GLIDER -->
+    <!-- <link rel="author" href="https://github.com/angular-ui/bootstrap/graphs/contributors"> -->
+    <!-- <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+
+    <!--========== BOX ICONS ==========-->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- TRANSLATE -->
+    <!-- <script type = "text/javascript" src = "frontend/view/js/translate.js"></script> -->
+
+    <!-- Toaster -->
+    <link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css"/>
+    <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="frontend/view/css/main.css" />
+    <link rel="stylesheet" href="frontend/view/css/style.css" />
+
+</head>
+
+<body>
+    <div ng-include='"frontend/view/includes/menu.view.html"'></div>
+    <div ng-view autoscroll = "true"></div>
+    <div ng-include='"frontend/view/includes/footer.view.html"'></div>
+</body>
+
+</html>
