@@ -5,13 +5,15 @@
                 <div class="filters_content" ng-repeat="(key, filter) in filters">
                     <label class="filters_title">{{key}}</label>
                     <div class="filters_input" ng-repeat="value in filter">
-                        <input class='check' type='checkbox' id="{{key}}" ng-repeat="name in value" ng-click="filter_products(name, key)"/>
+                        <input class="check" type='checkbox' id="{{key}}" ng-repeat="name in value" ng-click="filter_products(name, key)" ng-checked="{{name}}"/>
                         <label for='etiquetas' ng-repeat="name in value" value='{{name}}'>{{name}}</label>
                     </div>
-
-
                 </div>
             </form> 
+            <div class='filters_input'>
+                <input class='filter_button' name='Submit' type='button' id='filter' value='Filter' ng-click='filter_products()'/>
+                <input class='remove_button' name='Submit' type='button' id='remove-filters' value='Remove' ng-click='remove_filters()'/>
+            </div>
         </div>
         <div class="list_content" id="list_cars">
             <div class="orderby">
@@ -47,9 +49,8 @@
         <div class="shop_details_content">
             <div class='details_box'>
                 <div class='details_content'>
-                    <div class='carrusel_details' ng-repeat="imgs in images">
-                        <h2>{{imgs.image_name}}</h2>
-                        <div class="carousel_details_elements" ng-repeat="imgs in images">
+                    <div class='carrusel_details'>
+                        <div class="carousel_details_elements">
                             <carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
                                 <slide ng-repeat="imgs in images">
                                     <img class='carousel_details_img' src='http://localhost/Framework_PHP_OO_MVC_AngularJS/frontend/{{imgs.image_name}}'>

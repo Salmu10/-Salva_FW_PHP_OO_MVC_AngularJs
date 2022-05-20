@@ -1,5 +1,5 @@
 app.factory('services_shop', ['services', '$rootScope', function(services, $rootScope) {
-    let service = {details: details, filter_search: filter_search, pagination: pagination, change_page: change_page};
+    let service = {details: details, filter_search: filter_search, pagination: pagination, change_page: change_page, highlight_filters: highlight_filters};
     return service;
 
     function filter_search() {
@@ -8,11 +8,21 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         // services.post('shop', 'filters_search', {orderby: "asc", total_prod: 5, items_page: 5, filters: filters})
         services.post('shop', 'filters_search', {filters: filters})
         .then(function(response) {
-            console.log(response);
-           pagination(response);
+            pagination(response);
         }, function(error) {
             console.log(error);
         });
+    }
+
+    function highlight_filters() {
+        if (localStorage.getItem('filters')) {
+            const filters = JSON.parse(localStorage.getItem('filters'));
+            for (row in filters) {
+                for (row_inner in filters[row]) {
+                    $rootScope[filters[row][row_inner]] = true;
+                }
+            }
+        }
     }
 
     function details(id) {
@@ -22,9 +32,7 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
             $rootScope.noWrapSlides = false;
             $rootScope.active = 0;
             $rootScope.list = response[0];
-            $rootScope.images = response[1];
-            console.log($rootScope.images);
-            console.log($rootScope.list);
+            $rootScope.images = response[1][0];
             // load_favs();
         }, function(error) {
             console.log(error);
@@ -39,15 +47,12 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         for(i = 1; i <= $rootScope.total_page; i++){
             $rootScope.pages.push(i);
         }
-        // console.log($rootScope.total_page);
         change_page($rootScope.page);
     }
 
     function change_page(page) {
         $rootScope.show1 = true;
         $rootScope.show2 = true;
-
-        console.log('Hola change');
 
         $rootScope.current_page = page;
         $rootScope.list =  $rootScope.cars.slice((($rootScope.current_page - 1) * 5), (($rootScope.current_page) * 5));
@@ -57,7 +62,6 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         if(page <= 1){
             $rootScope.show1 = false;
         }
-        // console.log($rootScope.show1);
     }
 
 }]);

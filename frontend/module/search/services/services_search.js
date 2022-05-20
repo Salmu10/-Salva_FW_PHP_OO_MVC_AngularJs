@@ -41,13 +41,16 @@ app.factory('services_search', ['services', '$rootScope', function(services, $ro
         }
         
         if(car_type){
-            filters.push({key: "car_type", value: [car_type]});
+            // console.log(car_type);
+            // filters.push({key: "car_type", value: [car_type]});
+            filters.push({"type_name": [car_type]});
         }
         if(car_brand){
-            filters.push({key: "brand_name", value: [car_brand]});
+            // filters.push({key: "brand_name", value: [car_brand]});
+            filters.push({"brand_name": [car_brand]});
         }
         if(complete != undefined && complete != ""){ 
-            filters.push({key: "city", value: complete});     
+            filters.push({"city": [complete]});    
         }
        
         if(filters){

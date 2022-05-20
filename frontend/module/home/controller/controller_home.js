@@ -18,13 +18,7 @@ app.controller('controller_home', function($scope, $window, carrusel, category, 
 
     $scope.redirect_shop = function(key, value) {
       var filters = [];
-      // filters.push({key, value});
-      // localStorage.removeItem('filters');
-      // localStorage.setItem('filters', JSON.stringify(filters));
       localStorage.setItem('currentPage', 'shop-list');
-      // location.href = "#/shop";
-      // $location.path('/#shop');
-      console.log(key);
       if (key == "brand_name") {
         filters.push({"brand_name": [value]});
         localStorage.removeItem('filters');
@@ -41,7 +35,6 @@ app.controller('controller_home', function($scope, $window, carrusel, category, 
         localStorage.setItem('filters', JSON.stringify(filters));
         location.href = "#/shop";
       }
-
     };
   
 });
