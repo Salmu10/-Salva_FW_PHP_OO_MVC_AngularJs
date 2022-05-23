@@ -5,7 +5,7 @@
                 <div class="filters_content" ng-repeat="(key, filter) in filters">
                     <label class="filters_title">{{key}}</label>
                     <div class="filters_input" ng-repeat="value in filter">
-                        <input class="check" type='checkbox' id="{{key}}" ng-repeat="name in value" ng-click="filter_products(name, key)" ng-checked="{{name}}"/>
+                        <input class="check" type='checkbox' id="{{key}}" ng-repeat="name in value" ng-model='name.selected' ng-checked="{{name}}"/>
                         <label for='etiquetas' ng-repeat="name in value" value='{{name}}'>{{name}}</label>
                     </div>
                 </div>

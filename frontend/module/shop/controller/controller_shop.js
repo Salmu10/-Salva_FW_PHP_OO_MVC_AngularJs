@@ -6,21 +6,35 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
     var extras = [];
     var doors = [];
     // var filters = [];  
-
-    // var checkbox = "Electric";
-
-    // $scope.checkbox = true;
-
-    $scope.filter_products = function(value, key) {
+    
+    $scope.filter_products = function() {
+        
         var filter_type = [];
+        $scope.filters = filters;
 
-        // if(key == "type_name"){
-        //     if(!type_name.includes(value)){
-        //         type_name.push(value);
-        //     }else{
-        //         i = type_name.indexOf(value);
-        //         type_name.splice( i, 1 );
-        //     }
+        angular.forEach('type_name', function () {
+            console.log(type_name.selected);
+            if (type_name.selected) {
+                console.log('holaaaaaa');
+            }
+        });
+
+        $scope.filters.forEach(function(value) {    
+            if (value.selected) {
+            console.log('heeeeeeeeeeey');
+            }
+        });
+         
+
+        if(key == "type_name"){
+            if(!type_name.includes(value)){
+                type_name.push(value);
+            }else{
+                i = type_name.indexOf(value);
+                console.log('type_name');
+                type_name.splice( i, 1 );
+            }
+        }
         // }else if(key == "category_name"){
         //     if(!category_name.includes(value)){
         //         category_name.push(value);
@@ -98,7 +112,6 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
     let path = $route.current.originalPath.split('/');
     if(path[1] === 'shop'){
         $scope.filters = filters;
-        console.log(filters);
         $scope.show_list = true;
         $scope.show_details = false;
         if(localStorage.filters){
