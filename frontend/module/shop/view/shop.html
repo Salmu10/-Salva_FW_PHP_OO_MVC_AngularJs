@@ -5,13 +5,15 @@
                 <div class="filters_content" ng-repeat="(key, filter) in filters">
                     <label class="filters_title">{{key}}</label>
                     <div class="filters_input" ng-repeat="value in filter">
-                        <input class="check" type='checkbox' id="{{key}}" ng-repeat="name in value" ng-model='name.selected' ng-checked="{{name}}"/>
+                        <!-- <div> -->
+                        <input class="check" type='checkbox' id="{{key}}" ng-model="value.checked" ng-repeat="name in value" ng-checked="{{name}}" ng-click="filter_cars(value)"/>
                         <label for='etiquetas' ng-repeat="name in value" value='{{name}}'>{{name}}</label>
+                        <!-- </div> -->
                     </div>
                 </div>
             </form> 
             <div class='filters_input'>
-                <input class='filter_button' name='Submit' type='button' id='filter' value='Filter' ng-click='filter_products()'/>
+                <input class='filter_button' name='Submit' type='button' id='filter' value='Filter' ng-click='filter_products(filters)'/>
                 <input class='remove_button' name='Submit' type='button' id='remove-filters' value='Remove' ng-click='remove_filters()'/>
             </div>
         </div>

@@ -1,92 +1,22 @@
 app.controller('controller_shop', function($scope, $rootScope, $route, filters, list, services_shop) {
 
-    var type_name = [];
-    var category_name = [];
-    var color = [];
-    var extras = [];
-    var doors = [];
-    // var filters = [];  
-    
-    $scope.filter_products = function() {
-        
-        var filter_type = [];
-        $scope.filters = filters;
+    // $scope.filter_cars = function (filt) {
+    //     console.log(filt);
+    // };
 
-        angular.forEach('type_name', function () {
-            console.log(type_name.selected);
-            if (type_name.selected) {
-                console.log('holaaaaaa');
-            }
-        });
+    // for (row in filters) {
+    //     for (row_inner in filters[row]) {
+    //         for (row_inner_inner in filters[row][row_inner]) {
+    //             console.log(filters[row][row_inner][row_inner_inner]);
+    //             $scope.filters_names = filters[row][row_inner][row_inner_inner];
+    //         }
+    //     }
+    // }
 
-        $scope.filters.forEach(function(value) {    
-            if (value.selected) {
-            console.log('heeeeeeeeeeey');
-            }
-        });
-         
+    $scope.filter_products = function (filt) {
+        services_shop.get_filters(filt);
+    };
 
-        if(key == "type_name"){
-            if(!type_name.includes(value)){
-                type_name.push(value);
-            }else{
-                i = type_name.indexOf(value);
-                console.log('type_name');
-                type_name.splice( i, 1 );
-            }
-        }
-        // }else if(key == "category_name"){
-        //     if(!category_name.includes(value)){
-        //         category_name.push(value);
-        //     }else{
-        //         i = category_name.indexOf(value);
-        //         category_name.splice( i, 1 );
-        //     }
-        // }else if(key == "color"){
-        //     if(!color.includes(value)){
-        //         color.push(value);
-        //     }else{
-        //         i = color.indexOf(value);
-        //         color.splice( i, 1 );
-        //     }
-        // }else if(key == "extras"){
-        //     if(!extras.includes(value)){
-        //         extras.push(value);
-        //     }else{
-        //         i = extras.indexOf(value);
-        //         extras.splice( i, 1 );
-        //     }
-        // }else if(key == "doors"){
-        //     if(!doors.includes(value)){
-        //         doors.push(value);
-        //     }else{
-        //         i = doors.indexOf(value);
-        //         doors.splice( i, 1 );
-        //     }
-        // }
-
-        // if(talla.length != 0){
-        //     filter_type.push({key : 'type_name', value : type_name});
-        // }
-        // if(color.length != 0){
-        //     filter_type.push({key : 'category_name', value : category_name});
-        // }
-        // if(categoria.length != 0){
-        //     filter_type.push({key : 'color', value : color});
-        // }
-        // if(categoria.length != 0){
-        //     filter_type.push({key : 'extras', value : extras});
-        // }
-        // if(categoria.length != 0){
-        //     filter_type.push({key : 'doors', value : doors});
-        // }
-
-        if(filter_type.length == 0){
-            $scope.pagination(list);
-        }else{
-            services_shop.filter_search(filter_type);
-        }
-    }
 
     $scope.pagination = function(cars) {
         services_shop.pagination(cars);
