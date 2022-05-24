@@ -1,12 +1,15 @@
 app.factory('services_shop', ['services', '$rootScope', function(services, $rootScope) {
-    let service = {details: details, filter_search: filter_search, pagination: pagination, change_page: change_page, highlight_filters: highlight_filters, get_filters: get_filters};
+    let cont = 0;
+    let service = {details: details, filter_search: filter_search, pagination: pagination, change_page: change_page, highlight_filters: highlight_filters, 
+        get_filters: get_filters, orderby: orderby, visits: visits, cars: cars, load_more: load_more};
     return service;
+
+    // , load_more: load_more, cars: cars
 
     function filter_search() {
         var filters = localStorage.getItem('filters');
-        // console.log(filters);
-        // services.post('shop', 'filters_search', {orderby: "asc", total_prod: 5, items_page: 5, filters: filters})
-        services.post('shop', 'filters_search', {filters: filters})
+        var orderby = localStorage.getItem('orderby');
+        services.post('shop', 'filters_search', {orderby: orderby, filters: filters})
         .then(function(response) {
             pagination(response);
         }, function(error) {
@@ -14,8 +17,9 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         });
     }
 
-
     function get_filters(filt) {
+
+        console.log(cont);
 
         var type_name = [];
         var category_name = [];
@@ -24,15 +28,11 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         var doors = [];
         var filters = [];  
 
-        // console.log(filt.type_name);
-        // console.log(filters.type_name);
-
         // localStorage.removeItem('filters');
 
         angular.forEach(filt.type_name, function (value, key) {
             if (filt.type_name[key].checked) {
                 type_name.push(filt.type_name[key].type_name);
-                console.log(type_name);
             }
         });
         if(type_name.length != 0){
@@ -52,7 +52,6 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         angular.forEach(filt.color, function (value, key) {
             if (filt.color[key].checked) {
                 color.push(filt.color[key].color);
-                console.log(color);
             }
         });
         if(color.length != 0){
@@ -62,7 +61,6 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         angular.forEach(filt.extras, function (value, key) {
             if (filt.extras[key].checked) {
                 extras.push(filt.extras[key].extras);
-                console.log(extras);
             }
         });
         if(extras.length != 0){
@@ -72,7 +70,6 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         angular.forEach(filt.doors, function (value, key) {
             if (filt.doors[key].checked) {
                 doors.push(filt.doors[key].doors);
-                console.log(doors);
             }
         });
         if(doors.length != 0){
@@ -99,6 +96,24 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         }
     }
 
+    function orderby(order) {
+    
+        var orderby = [];
+        let orderby_val = order;
+    
+        localStorage.setItem('orderby', orderby);
+
+        if (orderby_val == 1){
+            orderby = "price DESC,";
+        } else if (orderby_val == 2){
+            orderby = "price ASC,";
+        } else {
+            orderby = "";
+        }
+
+        localStorage.setItem('orderby', orderby);
+    }
+
     function details(id) {
         services.post('shop', 'details_carousel', {id: id})
         .then(function(response) {
@@ -107,7 +122,45 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
             $rootScope.active = 0;
             $rootScope.list = response[0];
             $rootScope.images = response[1][0];
+            visits(id);
+            cars(response);
             // load_favs();
+        }, function(error) {
+            console.log(error);
+        });
+    }
+
+    function cars(car_data) {
+        services.post('shop', 'cars', {category: car_data[0][0].category, type: car_data[0][0].type, id: car_data[0][0].id})
+        .then(function(response) {
+            // $rootScope.related = response.slice(0, 3);
+            // cont = 0;
+            load_more(response);
+        }, function(error) {
+            console.log(error);
+        });
+    }
+
+    function load_more(car) {
+
+        cont = cont + 3;
+
+        if (car != undefined) {
+            related_car = car;
+        }
+
+        $rootScope.related = related_car.slice(0, cont);
+        
+        if (cont >= related_car.length) {
+            var el = angular.element(document.querySelector('#load_more_button'));
+            el.remove();
+        }
+    }
+
+    function visits(id) {
+        services.post('shop', 'most_visit', {id: id})
+        .then(function(response) {
+            console.log("Visits updated");
         }, function(error) {
             console.log(error);
         });

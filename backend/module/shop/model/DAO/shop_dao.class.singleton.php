@@ -24,7 +24,7 @@
         public function select_all($db) {
 
             $sql = "SELECT c.*, b.*, t.*, ct.* FROM cars c INNER JOIN brand b INNER JOIN type t INNER JOIN category ct ON c.brand = b.cod_brand " 
-            . "AND c.type = t.cod_type AND c.category = ct.cod_category";
+            . "AND c.type = t.cod_type AND c.category = ct.cod_category ORDER BY visits DESC";
 
             $stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
@@ -129,15 +129,15 @@
             . "AND c.category = ct.cod_category AND c.type = t.cod_type $sql_filter ORDER BY $orderby visits DESC LIMIT $total_prod, $items_page";
             
             $stmt = $db->ejecutar($sql);
-            return $db->listar($stmt);
+            return $db->$orderby;
         }
 
-        public function filters_2($db, $query) {
+        public function filters_2($db, $orderby, $query) {
 
             $sql_filter = self::sql_filter($query);
 
             $sql = "SELECT c.*, b.*, t.*, ct.* FROM cars c INNER JOIN brand b INNER JOIN type t INNER JOIN category ct ON c.brand = b.cod_brand "
-            . "AND c.category = ct.cod_category AND c.type = t.cod_type $sql_filter ORDER BY visits DESC";
+            . "AND c.category = ct.cod_category AND c.type = t.cod_type $sql_filter ORDER BY $orderby visits DESC";
             
             $stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
@@ -178,10 +178,10 @@
             return $db->listar($stmt);
         }
 
-        public function select_cars($db, $category, $type, $id, $loaded, $items){
+        public function select_cars($db, $category, $type, $id){
 
             $sql = "SELECT c.*, b.*, t.*, ct.* FROM cars c INNER JOIN brand b INNER JOIN type t INNER JOIN category ct ON c.brand = b.cod_brand "
-            . "AND c.type = t.cod_type AND c.category = ct.cod_category WHERE c.category = '$category' AND c.id <> $id OR c.type = '$type' AND c.id <> $id LIMIT $loaded, $items";
+            . "AND c.type = t.cod_type AND c.category = ct.cod_category WHERE c.category = '$category' AND c.id <> $id OR c.type = '$type' AND c.id <> $id";
 
             $stmt = $db->ejecutar($sql);
             return $db->listar($stmt);

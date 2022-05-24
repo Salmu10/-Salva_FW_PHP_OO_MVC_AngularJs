@@ -16,12 +16,11 @@
         
         function filters_search() {
             // echo json_encode(common::load_model('shop_model', 'get_filters_search', [$_POST['orderby'], $_POST['total_prod'],$_POST['items_page'], $_POST['filters']]));
-            // echo json_encode($_POST['filters']);
-            echo json_encode(common::load_model('shop_model', 'get_filters_search', [$_POST['filters']]));
+            echo json_encode(common::load_model('shop_model', 'get_filters_search', [$_POST['orderby'], $_POST['filters']]));
         }
 
         function most_visit() {
-            echo json_encode(common::load_model('shop_model', 'get_most_visit_BLL', $_POST['id']));
+            echo json_encode(common::load_model('shop_model', 'get_most_visit', $_POST['id']));
         }
 
         function count() {
@@ -33,8 +32,7 @@
         }
 
         function cars() {
-            // echo json_encode('Hola');
-            echo json_encode(common::load_model('shop_model', 'get_cars', [$_POST['category'], $_POST['type'], $_POST['id'], $_POST['loaded'], $_POST['items']]));
+            echo json_encode(common::load_model('shop_model', 'get_cars', [$_POST['category'], $_POST['type'], $_POST['id']]));
         }
 
         function load_likes() {

@@ -6,8 +6,8 @@
                     <label class="filters_title">{{key}}</label>
                     <div class="filters_input" ng-repeat="value in filter">
                         <!-- <div> -->
-                        <input class="check" type='checkbox' id="{{key}}" ng-model="value.checked" ng-repeat="name in value" ng-checked="{{name}}" ng-click="filter_cars(value)"/>
-                        <label for='etiquetas' ng-repeat="name in value" value='{{name}}'>{{name}}</label>
+                        <input class="check" type='checkbox' id="{{key}}" ng-model="value.checked" ng-repeat="name in value" ng-checked="{{name}}"/>
+                        <label for='etiquetas' class="etiqueta" ng-repeat="name in value" value='{{name}}'>{{name}}</label>
                         <!-- </div> -->
                     </div>
                 </div>
@@ -19,12 +19,12 @@
         </div>
         <div class="list_content" id="list_cars">
             <div class="orderby">
-                <select id="orderby_select">
-                    <option value="0">Order by...</option>
+                <select id="orderby_select" ng-model="selected_order" ng-change="orderby(selected_order)">
+                    <option value="">Order by...</option>
                     <option value="1">From highest to lowest price</option>
                     <option value="2">From lowest to highest price</option>
                 </select>
-                <input type="button" value="Apply" id="orderby_button"/>
+                <input type="button" value="Apply" id="orderby_button" ng-click='orderby_button()'/>
             </div>
             <div class="list_content_2" ng-repeat="car in list">
                 <div class="list_car" id='{{car.id}}'>
@@ -90,18 +90,32 @@
         <div id="features-wrapper_2">
             <h1 data-tr="Cars related"></h2>
             <div class="container" id="features-wrapper-container_2">
-                <div class="row" id="cat"></div>
-                <div class="load_more">
-                    <button class="load_more_button" id="load_more_button">Load More</button>
+                <div class="row" id="cat">
+                    <div class="more_related_elements" ng-repeat="car in related" id="{{car.id}}">
+                        <div class='col-4 col-12-medium'>
+                            <section class='box feature'>
+                                <div class='related_elements'>
+                                    <img class='list_img' src='http://localhost/Framework_PHP_OO_MVC_AngularJS/frontend/view/images/img_cars/{{car.car_image}}'>
+                                    <div class='inner'>       
+                                        <h2 class='category_title'>{{car.brand_name}} {{car.model}}</h2>
+                                    </div>
+                                </div>
+                                <!-- <div class='like_related'>
+                                    <div class='list_heart' id='"+ data[row].id +"'><i id='like' class='bx bx-heart'></i></div>
+                                </div> -->
+                            </section>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="more_related">
+            <button class="load_more_button" id="load_more_button" ng-click="load_more()">Load More</button>
+        </div>
     </div>
-    <div id="pagination">
-        
-            <a href="" ng-click="change_page(current_page - 1)" ng-show="show1">Previous</a>
-            <a href="" ng-repeat="page in pages" ng-click="change_page(page)">{{page}}</a>
-            <a href="" ng-click="change_page(current_page + 1)" ng-show="show2">Next</a>
-        
+    <div id="pagination" ng-show="show_paginacion">
+        <a href="" class="paginacion" ng-click="change_page(current_page - 1)" ng-show="show1">Previous</a>
+        <a href="" class="paginacion" ng-repeat="page in pages" ng-click="change_page(page)">{{page}}</a>
+        <a href="" class="paginacion" ng-click="change_page(current_page + 1)" ng-show="show2">Next</a>
     </div> 
 </div>

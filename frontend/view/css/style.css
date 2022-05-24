@@ -985,9 +985,8 @@ li.ng-scope.active {
     height: 220px;
 }
 
-.load_more{
+.more_related{
     display: block;
-    width: 100%;
     margin: auto;
 }
 
@@ -1021,6 +1020,10 @@ li.ng-scope.active {
     margin: auto;
     text-align: center;
     margin-top: 2%;
+}
+
+.paginacion{
+    padding: 5px;
 }
 
 /* News */
@@ -1436,7 +1439,7 @@ li.ng-scope.active {
 .contact_page {
     display: block;
     width: 500px;
-    height: 600px;
+    height: 630px;
     margin: auto;
     text-align: center;
     border-style: solid;
@@ -1456,6 +1459,12 @@ li.ng-scope.active {
 #contact_name, #contact_email {
     text-align: center;
     width: 200px;
+    height: 25px;
+}
+
+#message{
+    width: 300px;
+    height: 80px;
 }
 
 #send_contact {
