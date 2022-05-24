@@ -1,4 +1,4 @@
-app.factory('services_shop', ['services', '$rootScope', function(services, $rootScope) {
+app.factory('services_shop', ['services', '$rootScope', 'services_maps', function(services, $rootScope, services_maps) {
 
     let service = {details: details, filter_search: filter_search, pagination: pagination, change_page: change_page, highlight_filters: highlight_filters, 
         get_filters: get_filters, orderby: orderby, visits: visits, cars: cars, load_more: load_more};
@@ -12,7 +12,7 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         services.post('shop', 'filters_search', {orderby: orderby, filters: filters})
         .then(function(response) {
             pagination(response);
-            // services_maps.load_map(list);
+            services_maps.load_map(response);
         }, function(error) {
             console.log(error);
         });
@@ -123,6 +123,7 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
             $rootScope.images = response[1][0];
             visits(id);
             cars(response);
+            services_maps.load_map_details(response);
             // load_favs();
         }, function(error) {
             console.log(error);

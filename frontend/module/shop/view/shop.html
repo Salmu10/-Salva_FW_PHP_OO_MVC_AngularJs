@@ -6,7 +6,7 @@
                     <label class="filters_title">{{key}}</label>
                     <div class="filters_input" ng-repeat="value in filter">
                         <!-- <div> -->
-                        <input class="check" type='checkbox' id="{{key}}" ng-model="value.checked" ng-repeat="name in value" ng-checked="{{name}}"/>
+                        <input class="check" type='checkbox' id="{{key}}" ng-model="value.checked" ng-repeat="name in value" ng-checked="{{name}}" ng-click="prueba(value)"/>
                         <label for='etiquetas' class="etiqueta" ng-repeat="name in value" value='{{name}}'>{{name}}</label>
                         <!-- </div> -->
                     </div>
@@ -82,6 +82,7 @@
                     </div>
                 </div>
             </div> 
+            <div id="maps_details" class="maps_details"></div>
             <div class="back_list">
                 <div class='list_button' id='list-filters' data-tr='Back' ng-click="back_list()">Back</div>
             </div>

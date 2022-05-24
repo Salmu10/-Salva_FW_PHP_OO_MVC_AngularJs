@@ -1,10 +1,5 @@
 app.controller('controller_shop', function($scope, $rootScope, $route, filters, list, services_shop, services_maps) {
 
-
-    // $scope.filter_cars = function (filt) {
-    //     console.log(filt);
-    // };
-
     // for (row in filters) {
     //     for (row_inner in filters[row]) {
     //         for (row_inner_inner in filters[row][row_inner]) {
