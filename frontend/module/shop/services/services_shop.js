@@ -1,10 +1,10 @@
 app.factory('services_shop', ['services', '$rootScope', function(services, $rootScope) {
-    let cont = 0;
+
     let service = {details: details, filter_search: filter_search, pagination: pagination, change_page: change_page, highlight_filters: highlight_filters, 
         get_filters: get_filters, orderby: orderby, visits: visits, cars: cars, load_more: load_more};
-    return service;
+    let cont = 0;
 
-    // , load_more: load_more, cars: cars
+    return service;
 
     function filter_search() {
         var filters = localStorage.getItem('filters');
@@ -12,14 +12,13 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
         services.post('shop', 'filters_search', {orderby: orderby, filters: filters})
         .then(function(response) {
             pagination(response);
+            // services_maps.load_map(list);
         }, function(error) {
             console.log(error);
         });
     }
 
     function get_filters(filt) {
-
-        console.log(cont);
 
         var type_name = [];
         var category_name = [];

@@ -1,4 +1,4 @@
-app.controller('controller_shop', function($scope, $rootScope, $route, filters, list, services_shop) {
+app.controller('controller_shop', function($scope, $rootScope, $route, filters, list, services_shop, services_maps) {
 
 
     // $scope.filter_cars = function (filt) {
@@ -63,6 +63,7 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
         }else{
             // $scope.list = list;
             $scope.pagination(list);
+            services_maps.load_map(list);
         }
     }else if(path[1] === 'car'){
         $scope.show_list = false;
