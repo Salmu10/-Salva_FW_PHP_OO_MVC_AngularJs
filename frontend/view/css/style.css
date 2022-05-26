@@ -1,8 +1,9 @@
 .error { 
     color: red;
     font-family: arial;
-    font-size: 18px;
+    font-size: 16px;
     font-style: italic;
+    font-weight: 800;
 }
 
 #wrapper {
@@ -1163,6 +1164,7 @@ li.ng-scope.active {
 	padding: 15px 20px;
 	border-radius: 25px;
 	background: rgba(255,255,255,.1);
+    line-height: normal;
 }
 
 .login-form .group input[data-type="password"] {
@@ -1172,6 +1174,8 @@ li.ng-scope.active {
 
 .login-form .group .label {
 	font-size: 12px;
+    text-align: left;
+    font-weight: 600;
 }
 
 .login-form .group .button {

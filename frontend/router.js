@@ -38,6 +38,21 @@ app.config(['$routeProvider', function($routeProvider) {
         }).when("/contact", {
             templateUrl: "frontend/module/contact/view/contact.html",
             controller: "controller_contact"
+        }).when("/login", {
+            templateUrl: "frontend/module/login/view/login.html", 
+            controller: "controller_login"
+        }).when("/logout", {
+            templateUrl: "frontend/module/login/view/login.html", 
+            controller: "controller_login"
+        }).when("/verify/:token", {
+            templateUrl: "frontend/module/login/view/login.html", 
+            controller: "controller_login"
+        }).when("/recover", {
+            templateUrl: "frontend/module/login/view/login.html", 
+            controller: "controller_login"
+        }).when("/recover/:token", {
+            templateUrl: "frontend/module/login/view/login.html", 
+            controller: "controller_login"
         }).otherwise("/home", {
             templateUrl: "frontend/module/home/view/home.html", 
             controller: "controller_home",
