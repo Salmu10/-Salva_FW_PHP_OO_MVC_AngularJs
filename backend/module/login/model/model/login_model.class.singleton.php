@@ -34,8 +34,6 @@ class login_model {
         return $this -> bll -> get_recover_email_BBL($args);
     }
 
-
-
     public function get_verify_token($args) {
         return $this -> bll -> get_verify_token_BLL($args);
     }
@@ -44,12 +42,9 @@ class login_model {
         return $this -> bll -> get_new_password_BLL($args);
     }
 
-
-
     public function get_data_user($args) {
         return $this -> bll -> get_data_user_BLL($args);
     }
-
 
     public function get_activity() {
         return $this -> bll -> get_activity_BLL();

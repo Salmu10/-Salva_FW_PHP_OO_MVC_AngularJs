@@ -61,15 +61,22 @@ app.factory('services_login', ['services', 'services_localstorage', '$rootScope'
     }
 
     function verify_email(token) {
-        console.log(token);
-        // services.post('login', 'verify_email', {token:token})
-        // .then(function(response) {
-        //     $rootScope.token = response;
-        //     location.href = "#/login ";
-        //     return;
-        // }, function(error) {
-        //     console.log(error);
-        // });
+        // console.log(token);
+        services.post('login', 'verify_email', {token_email: token})
+        .then(function(response) {
+            result = JSON.parse(response);
+            console.log(result);
+            if(result == "fail"){
+                toastr.error("Something went wrong");
+            } else {
+                toastr.success('Email verified');
+                location.href = "#/login/";
+                return;
+            }
+
+        }, function(error) {
+            console.log(error);
+        });
     }
 
 }]);

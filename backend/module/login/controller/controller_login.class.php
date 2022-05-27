@@ -15,11 +15,7 @@
         } 
     
         function verify_email() {
-            $verify = json_encode(common::load_model('login_model', 'get_verify_email', $_POST['token_email']));
-            echo json_encode($verify);
-            // if (!empty($verify)) {
-            //     return;
-            // }
+            echo json_encode(common::load_model('login_model', 'get_verify_email', $_POST['token_email']));
         }
 
         function send_recover_email() {
