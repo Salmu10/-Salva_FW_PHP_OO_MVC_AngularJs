@@ -35,16 +35,9 @@
 								'toEmail' =>  $args[0]];
 				$email = json_decode(mail::send_email($message), true);
 				if (!empty($email)) {
-					return;  
+					return $token_email;  
 				}   
 			}
-			
-			// if($this -> dao -> insert_user($this->db, $id, $args[0], $hashed_pass, $args[2], $avatar, $token_email)){
-			// 	$this -> dao -> insert_user($this->db, $id, $args[0], $hashed_pass, $args[2], $avatar, $token_email);
-			// 	return $token_email;
-			// } else {
-			// 	return 'error';
-			// }
 		}
 
 		public function get_login_BLL($args) {
@@ -56,7 +49,7 @@
 					$_SESSION['username'] = $user[0]['username'];
 					$_SESSION['tiempo'] = time();
                     session_regenerate_id();
-					return json_encode($jwt);
+					return $jwt;
 				} else if (password_verify($args[1], $user[0]['password']) && $user[0]['activate'] == 0) {
 					return 'activate error';
 				} else {

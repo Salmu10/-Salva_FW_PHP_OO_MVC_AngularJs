@@ -29,7 +29,8 @@ app.factory('services_shop', ['services', '$rootScope', 'services_maps', functio
 
         // localStorage.removeItem('filters');
 
-        angular.forEach(filt.type_name, function (value, key) {
+        angular.forEach(filt.type_name, function (key) {
+            console.log(filt.type_name[key]);
             if (filt.type_name[key].checked) {
                 type_name.push(filt.type_name[key].type_name);
             }

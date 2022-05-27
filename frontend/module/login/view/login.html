@@ -16,6 +16,9 @@
                             <span class="error" ng-show="login_form.username.$error.minlength && login_form.username.$invalid">
                                 The name must be longer than 5 characters.
                             </span>
+							<span class="error" ng-show="duplicate_user">
+                                The email or username does't exist.
+                            </span>
 						</font>
 					</div>
 					<div class="group">
@@ -27,6 +30,9 @@
                             </span>
                             <span class="error" ng-show="login_form.password.$dirty && login_form.password.$invalid">
                                 The password must be between 5 and 20 characters.
+                            </span>
+							<span class="error" ng-show="wrong_password">
+                                Wrong password.
                             </span>
 						</font>
 					</div>
@@ -63,6 +69,9 @@
                             <span class="error" ng-show="register_form.username_reg.$dirty && register_form.username_reg.$invalid">
                                 The name must be between 5 and 10 characters.
                             </span>
+							<span class="error" ng-show="duplicate_username">
+                                The username is already in use.
+                            </span>
 						</font>
 					</div>
 					<div class="group">
@@ -84,10 +93,7 @@
                             <span class="error" ng-show="register_form.pass_reg_2.$error.required && register_form.pass_reg_2.$touched">
                                 You have to write a password. <br>
                             </span>
-                            <span class="error" ng-show="register_form.pass_reg_2.$dirty && register_form.pass_reg_2.$invalid">
-                                The password must be between 5 and 20 characters.
-                            </span>
-                            <span class="error" ng-show="register_form.pass_reg != register_form.pass_reg_2">
+                            <span class="error" ng-show="pass_equal">
                                 Passwords don't match.
                             </span>
 						</font>
@@ -102,10 +108,13 @@
                             <span class="error" ng-show="register_form.email_reg.$dirty && register_form.email_reg.$invalid">
                                 The email format is invalid.
                             </span>
+							<span class="error" ng-show="duplicate_email">
+                                The email is already in use.
+                            </span>
 						</font>
 					</div>
 					<div class="group">
-						<input type="button" class="button" id="button_register" value="Sign Up" ng-click="register()">
+						<input type="button" class="button" id="button_register" value="Sign Up" ng-click="register()" ng-disabled="register_form.username_reg.$invalid || register_form.pass_reg.$invalid || register_form.email_reg.$invalid">
 					</div>
 				</div>
 			</form>

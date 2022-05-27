@@ -6,7 +6,7 @@ use cars;
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2022 a las 14:43:45
+-- Tiempo de generación: 27-05-2022 a las 16:27:37
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -71,7 +71,7 @@ CREATE TABLE `cars` (
   `extras` varchar(1000) NOT NULL,
   `car_image` varchar(1000) NOT NULL,
   `price` int(11) NOT NULL,
-  `doors` int(10) NOT NULL,
+  `doors` varchar(100) NOT NULL,
   `city` varchar(100) NOT NULL,
   `lat` varchar(1000) NOT NULL,
   `lng` varchar(1000) NOT NULL,
@@ -83,18 +83,18 @@ CREATE TABLE `cars` (
 --
 
 INSERT INTO `cars` (`id`, `license_number`, `brand`, `model`, `car_plate`, `km`, `category`, `type`, `comments`, `discharge_date`, `color`, `extras`, `car_image`, `price`, `doors`, `city`, `lat`, `lng`, `visits`) VALUES
-(1, '1W2D50JIL04J3L5K1', 'BMW', 'I4', '4567DAB', 0, 'KM0', 'ET', 'Coche nuevo y automático', '15/04/2019', 'White', 'Navegador', 'bmw_i4.jpg', 50000, 4, 'Ontinyent', '38.8232769', '-0.600155', 0),
-(2, '2OUD50JIL04J3L5G6', 'CP', 'Formentor', '7645JDH', 10000, 'RT', 'GS', 'Coche nuevo y automático', '26/07/2019', 'Mate_Blue', 'Navegador', 'cupra_formentor.jpg', 32000, 5, 'Barcelona', '41.378517020872096', '2.12054921251206', 0),
-(3, '8P9D50JIL04J3L1H7', 'FRD', 'Mustang', '6547LGM', 2000, 'SM', 'ET', 'Coche nuevo y automático', '30/03/2019', 'Blue', 'Navegador', 'ford_mustang.jpg', 39000, 5, 'Valencia', '39.4697065', '-0.3763353', 0),
-(4, '44GD50JIL04J3LH58', 'MCD', 'GLC Coupé', '9745DFM', 25000, 'SM', 'OT', 'Coche nuevo y automático', '26/07/2019', 'Mate_Grey', 'Navegador', 'mercedes_glc_coupe.jpg', 60000, 5, 'Tarragona', '41.116501', '1.2547559036906364', 0),
-(5, '3J4750JIL04J3LKP4', 'AUD', 'A6', '2641FKL', 50000, 'RT', 'HB', 'Coche nuevo y automático', '20/06/2017', 'White', 'Navegador', 'audi_q5_hibrido.jpg', 28000, 4, 'Toledo', '39.859272168634305', '-4.026596093654632', 0),
-(6, '6k41L9JIL04J3LKP4', 'TS', 'Roadster', '4621LPL', 0, 'KM0', 'ET', 'Coche nuevo y automático', '22/02/2022', 'Red', 'Navegador', 'tesla_roadster.jpg', 100000, 4, 'Zaragoza', '41.6521342', '-0.8809428', 0),
-(7, '2G4D50JIL04J3L5HJ', 'TS', 'Cybertruck', '9524LHG', 0, 'KM0', 'ET', 'Coche nuevo y automático', '15/04/2019', 'White', 'Navegador', 'tesla_cybertruck.jpg', 50000, 4, 'Alicante', '38.3436365', '-0.4881708', 0),
-(8, '0O6D50JIL04J3L45H', 'VW', 'T-Cross', '9486JGF', 20000, 'RT', 'GS', 'Coche nuevo y automático', '26/07/2019', 'Turquoise', 'Navegador', 'volkswagen_t-cross.jpg', 32000, 5, 'Sevilla', '37.38780795368304', '-5.995093536775556', 0),
-(9, '9G6D50JIL04J3L234', 'AUD', 'E-tron', '3214TLE', 0, 'KM0', 'ET', 'Coche nuevo y automático', '30/03/2019', 'Blue', 'Navegador', 'audi_etron_gt.jpg', 39000, 5, 'Albacete', '38.9950921', '-1.8559154', 0),
-(10, '5FGD50JIL04J3LGJ6', 'TY', 'C-HR', '1659KRW', 64000, 'SM', 'HB', 'Coche nuevo y automático', '26/07/2019', 'Orange', 'Navegador', 'toyota_C-HR.jpg', 60000, 5, 'Barcelona', '41.37422519654638', '2.175717061578382', 0),
-(11, '1F4750JIL04J3LK81', 'MCD', 'EQE', '4561HGH', 5500, 'SM', 'ET', 'Coche nuevo y automático', '20/06/2017', 'Red', 'Navegador', 'mercedes_eqe.jpg', 28000, 4, 'Madrid', '40.4167047', '-3.7035825', 0),
-(12, '78L1L9JIL04J3L4J9', 'TS', 'Model X', '9414LHP', 0, 'KM0', 'ET', 'Coche nuevo y automático', '22/02/2022', 'Red', 'Navegador', 'tesla_model_x.jpg', 100000, 4, 'Granada', '37.1734995', '-3.5995337', 0);
+(1, '1W2D50JIL04J3L5K1', 'BMW', 'I4', '4567DAB', 0, 'KM0', 'ET', 'Coche nuevo y automático', '15/04/2019', 'White', 'Navegador', 'bmw_i4.jpg', 50000, 'cinco', 'Ontinyent', '38.8232769', '-0.600155', 72),
+(2, '2OUD50JIL04J3L5G6', 'CP', 'Formentor', '7645JDH', 10000, 'RT', 'GS', 'Coche nuevo y automático', '26/07/2019', 'Mate_Blue', 'Navegador', 'cupra_formentor.jpg', 32000, 'cinco', 'Barcelona', '41.378517020872096', '2.12054921251206', 0),
+(3, '8P9D50JIL04J3L1H7', 'FRD', 'Mustang', '6547LGM', 2000, 'SM', 'ET', 'Coche nuevo y automático', '30/03/2019', 'Blue', 'Navegador', 'ford_mustang.jpg', 39000, 'cinco', 'Valencia', '39.4697065', '-0.3763353', 0),
+(4, '44GD50JIL04J3LH58', 'MCD', 'GLC Coupé', '9745DFM', 25000, 'SM', 'OT', 'Coche nuevo y automático', '26/07/2019', 'Mate_Grey', 'Navegador', 'mercedes_glc_coupe.jpg', 60000, 'cinco', 'Tarragona', '41.116501', '1.2547559036906364', 0),
+(5, '3J4750JIL04J3LKP4', 'AUD', 'A6', '2641FKL', 50000, 'RT', 'HB', 'Coche nuevo y automático', '20/06/2017', 'White', 'Navegador', 'audi_q5_hibrido.jpg', 28000, 'cuatro', 'Toledo', '39.859272168634305', '-4.026596093654632', 0),
+(6, '6k41L9JIL04J3LKP4', 'TS', 'Roadster', '4621LPL', 0, 'KM0', 'ET', 'Coche nuevo y automático', '22/02/2022', 'Red', 'Navegador', 'tesla_roadster.jpg', 100000, 'cuatro', 'Zaragoza', '41.6521342', '-0.8809428', 7),
+(7, '2G4D50JIL04J3L5HJ', 'TS', 'Cybertruck', '9524LHG', 0, 'KM0', 'ET', 'Coche nuevo y automático', '15/04/2019', 'White', 'Navegador', 'tesla_cybertruck.jpg', 50000, 'cuatro', 'Alicante', '38.3436365', '-0.4881708', 0),
+(8, '0O6D50JIL04J3L45H', 'VW', 'T-Cross', '9486JGF', 20000, 'RT', 'GS', 'Coche nuevo y automático', '26/07/2019', 'Turquoise', 'Navegador', 'volkswagen_t-cross.jpg', 32000, 'cinco', 'Sevilla', '37.38780795368304', '-5.995093536775556', 1),
+(9, '9G6D50JIL04J3L234', 'AUD', 'E-tron', '3214TLE', 0, 'KM0', 'ET', 'Coche nuevo y automático', '30/03/2019', 'Blue', 'Navegador', 'audi_etron_gt.jpg', 39000, 'cinco', 'Albacete', '38.9950921', '-1.8559154', 0),
+(10, '5FGD50JIL04J3LGJ6', 'TY', 'C-HR', '1659KRW', 64000, 'SM', 'HB', 'Coche nuevo y automático', '26/07/2019', 'Orange', 'Navegador', 'toyota_C-HR.jpg', 60000, 'cinco', 'Barcelona', '41.37422519654638', '2.175717061578382', 0),
+(11, '1F4750JIL04J3LK81', 'MCD', 'EQE', '4561HGH', 5500, 'SM', 'ET', 'Coche nuevo y automático', '20/06/2017', 'Red', 'Navegador', 'mercedes_eqe.jpg', 28000, 'cuatro', 'Madrid', '40.4167047', '-3.7035825', 0),
+(12, '78L1L9JIL04J3L4J9', 'TS', 'Model X', '9414LHP', 0, 'KM0', 'ET', 'Coche nuevo y automático', '22/02/2022', 'Red', 'Navegador', 'tesla_model_x.jpg', 100000, 'cuatro', 'Granada', '37.1734995', '-3.5995337', 0);
 
 -- --------------------------------------------------------
 
@@ -242,10 +242,10 @@ INSERT INTO `likes` (`cod_like`, `username`, `id_car`) VALUES
 (10, 'salmu10', 12),
 (12, 'salmu10', 7),
 (17, 'salmu', 5),
-(22, 'salmu', 9),
 (23, 'salmu', 1),
 (24, 'ubedasalmu', 4),
-(25, 'ubedasalmu', 6);
+(25, 'ubedasalmu', 6),
+(26, 'salmu', 3);
 
 -- --------------------------------------------------------
 
@@ -285,16 +285,6 @@ CREATE TABLE `users` (
   `token_email` varchar(250) NOT NULL,
   `activate` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `user_type`, `avatar`, `token_email`, `activate`) VALUES
-('256142', 'salmu', '$2y$12$Q3fPhRuzsa3SsIzlHBqg6e2YTV91LQfLC2zahMDc6/QuB2/GT3Vm.', 'sqas@gmail.com', 'client', 'https://robohash.org/4d6c7b594132a737a7eaa31810c2f1a4', '', 1),
-('32c450', 'salmu70', '$2y$10$x2rjeCY8A4OomqhpIx987uJ3k0RKG3URQnMB7qo2mg354jheVs6OO', 'wefwes@gmail.com', 'client', 'https://robohash.org/17f4401e301b5ce07f5a514c2cdce6fe', '7bea93a22795eba84f35', 0),
-('b4ac02', 'salmu60', '$2y$12$Q3fPhRuzsa3SsIzlHBqg6e2YTV91LQfLC2zahMDc6/QuB2/GT3Vm.', 'edwerwer@gmail.com', 'client', 'https://robohash.org/d70cc9c7102c6167470c0b400623c631', '', 1),
-('voNu1FaH0HOAljo5qpz5B3oisTz1', 'ubedasalmu', '$2y$12$Q3fPhRuzsa3SsIzlHBqg6e2YTV91LQfLC2zahMDc6/QuB2/GT3Vm.', 'ubedasalmu@gmail.com', 'client', 'https://lh3.googleusercontent.com/a-/AOh14Ghd_-Zk2kohzswGIFstxDP2zsp1Jm7tKaLO7Q3Q=s96-c', '', 1);
 
 --
 -- Índices para tablas volcadas
@@ -376,7 +366,7 @@ ALTER TABLE `errors`
 -- AUTO_INCREMENT de la tabla `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `cod_like` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `cod_like` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Restricciones para tablas volcadas

@@ -1,13 +1,5 @@
 <?php
     class controller_login {
-
-        function view() {
-            common::load_view('top_page_login.html', VIEW_PATH_LOGIN . 'login.html');
-        }
-
-        function recover_view() {
-            common::load_view('top_page_login.html', VIEW_PATH_LOGIN . 'recover_pass.html');
-        }
     
         function login() {
             echo json_encode(common::load_model('login_model', 'get_login', [$_POST['username'], $_POST['password']]));
@@ -42,10 +34,6 @@
         function new_password() {
             // echo json_encode([$_POST['token_email'], $_POST['password']]);
             echo json_encode(common::load_model('login_model', 'get_new_password', [$_POST['token_email'], $_POST['password']]));
-            // if (!empty($password)) {
-            //     echo $password;
-            //     return;
-            // }
         }  
     
         function logout() {

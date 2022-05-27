@@ -2,24 +2,31 @@ app.controller('controller_login', function($scope, $route, $rootScope, services
     $scope.regex_username = /^[A-Za-z0-9._-]{5,10}$/;
     $scope.regex_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
     $scope.regex_password = /^[A-Za-z0-9._-]{5,20}$/;
-    
+
+
     $scope.login = function(){
-        console.log($scope.username);
-        console.log($scope.password);
-        // services_login.login($scope.username, $scope.password);
+        services_login.login($scope.username, $scope.password);
     }
 
     $scope.register = function(){
-        console.log($scope.username_reg);
-        console.log($scope.pass_reg);
-        console.log($scope.pass_reg_2);
-        services_login.register($scope.username_reg, $scope.email_reg, $scope.pass_reg);
+        if ($scope.pass_reg != $scope.pass_reg_2) {
+            $scope.pass_equal = true;
+        } else {
+            $scope.pass_equal = false;
+            services_login.register($scope.username_reg, $scope.pass_reg, $scope.email_reg);
+        }
     }
 
     let path = $route.current.originalPath.split('/');
     if(path[1] === 'login'){
         $scope.show_login = true;
         $scope.show_forget_password, $scope.show_recover_password = false;
-    } 
+    }
+    else if(path[1] === 'logout'){
+        services_login.logout();
+    }
+    else if (path[1] === 'verify') {
+        services_login.verify_email($route.current.params.token);
+    }
 
 });
