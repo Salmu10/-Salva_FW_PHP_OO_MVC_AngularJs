@@ -18,7 +18,7 @@ app.factory('services_login', ['services', 'services_localstorage', '$rootScope'
                 $rootScope.duplicate_user = false;
                 $rootScope.wrong_password = false;
                 services_localstorage.setSession(result);
-                toastr.success("Inicio de sesión realizado");
+                toastr.success("Log in successfully");
                 location.href = "#/home/";
                 window.location.reload();
                 return;
@@ -61,7 +61,6 @@ app.factory('services_login', ['services', 'services_localstorage', '$rootScope'
     }
 
     function verify_email(token) {
-        // console.log(token);
         services.post('login', 'verify_email', {token_email: token})
         .then(function(response) {
             result = JSON.parse(response);
@@ -73,7 +72,6 @@ app.factory('services_login', ['services', 'services_localstorage', '$rootScope'
                 location.href = "#/login/";
                 return;
             }
-
         }, function(error) {
             console.log(error);
         });
