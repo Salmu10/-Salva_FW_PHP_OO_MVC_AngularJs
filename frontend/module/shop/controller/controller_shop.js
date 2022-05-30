@@ -1,14 +1,5 @@
 app.controller('controller_shop', function($scope, $rootScope, $route, filters, list, services_shop, services_maps) {
 
-    // for (row in filters) {
-    //     for (row_inner in filters[row]) {
-    //         for (row_inner_inner in filters[row][row_inner]) {
-    //             console.log(filters[row][row_inner][row_inner_inner]);
-    //             $scope.filters_names = filters[row][row_inner][row_inner_inner];
-    //         }
-    //     }
-    // }
-
     $scope.filter_products = function (filt) {
         services_shop.get_filters(filt);
     };
@@ -56,7 +47,6 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
             services_shop.filter_search();
             services_shop.highlight_filters();
         }else{
-            // $scope.list = list;
             $scope.pagination(list);
             services_maps.load_map(list);
         }
