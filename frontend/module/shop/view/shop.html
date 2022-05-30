@@ -40,7 +40,9 @@
                             <h4>{{car.color}} - {{car.license_number}} - {{car.car_plate}}</h4>
                         </div>
                     </div>
-                    <!-- <div class='list_heart' id='"+ data[row].id +"'><i id='like' class='bx bx-heart'></i></div> -->
+                    <div class='list_heart' id='{{car.id}}' ng-click="add_favs()">
+                        <i id='like' class='bx {{car.favs_class}}'></i>
+                    </div>
                 </div>
             </div>
         </div>

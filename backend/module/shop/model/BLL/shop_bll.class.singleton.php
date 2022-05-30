@@ -57,16 +57,13 @@
 		}
 
 		public function get_load_likes_BLL($args) {
-
-			$token = explode('"', $args);
-			$decode = middleware::decode_username($token[1]);
+			$decode = middleware::decode_username($args);
 			return $this -> dao -> select_load_likes($this->db, $decode);
 		}
 
 		public function get_control_likes_BLL($args) {
 
-			$token = explode('"', $args[1]);
-			$decode = middleware::decode_username($token[1]);
+			$decode = middleware::decode_username($args[1]);
 
 			if ($this -> dao -> select_likes($this->db, $args[0], $decode)) {
 				return $this -> dao -> delete_likes($this->db, $args[0], $decode);

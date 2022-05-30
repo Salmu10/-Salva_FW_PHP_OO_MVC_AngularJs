@@ -37,6 +37,19 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
         location.href = "#/shop/";
     };
 
+    $scope.add_favs = function() {
+        if(localStorage.token){
+            services_shop.add_favs(this.car.id, localStorage.token);
+            if(this.car.favs_class == "bxs-heart"){
+                this.car.favs_class = "bx-heart";
+            }else{
+                this.car.favs_class = "bxs-heart";
+            }
+        }else{
+            location.href = "#/login/";
+        }
+    }
+
     let path = $route.current.originalPath.split('/');
     if(path[1] === 'shop'){
         $scope.filters = filters;

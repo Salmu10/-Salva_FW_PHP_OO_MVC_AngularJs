@@ -1,7 +1,7 @@
 app.factory('services_shop', ['services', '$rootScope', 'services_maps', function(services, $rootScope, services_maps) {
 
     let service = {details: details, filter_search: filter_search, pagination: pagination, change_page: change_page, highlight_filters: highlight_filters, 
-        get_filters: get_filters, orderby: orderby, visits: visits, cars: cars, load_more: load_more};
+        get_filters: get_filters, orderby: orderby, visits: visits, cars: cars, load_more: load_more, load_favs: load_favs, add_favs: add_favs};
     let cont = 0;
 
     return service;
@@ -125,7 +125,7 @@ app.factory('services_shop', ['services', '$rootScope', 'services_maps', functio
             visits(id);
             cars(response);
             services_maps.load_map_details(response);
-            // load_favs();
+            load_favs();
         }, function(error) {
             console.log(error);
         });
@@ -134,8 +134,6 @@ app.factory('services_shop', ['services', '$rootScope', 'services_maps', functio
     function cars(car_data) {
         services.post('shop', 'cars', {category: car_data[0][0].category, type: car_data[0][0].type, id: car_data[0][0].id})
         .then(function(response) {
-            // $rootScope.related = response.slice(0, 3);
-            // cont = 0;
             load_more(response);
         }, function(error) {
             console.log(error);
@@ -190,6 +188,41 @@ app.factory('services_shop', ['services', '$rootScope', 'services_maps', functio
         if(page <= 1){
             $rootScope.show1 = false;
         }
+        load_favs();
+    }
+
+    function load_favs() {
+        if(localStorage.token){
+            services.post('shop', 'load_likes', {token: localStorage.token})
+            .then(function(response) {
+                console.log(response);
+                for(row in $rootScope.list){
+                    $rootScope.list[row].favs_class = "bx-heart";
+                    var car = $rootScope.list[row];
+                    for(row in response){
+                        if(response[row].id_car == car.id){
+                            car.favs_class = "bxs-heart";
+                        };
+                    }
+                    $rootScope.list[row].favs_class = car.favs_class;
+                }
+            }, function(error) {
+                console.log(error);
+            });
+        }else{
+            for(row in $rootScope.list){
+                $rootScope.list[row].favs_class = "bx-heart";
+            }
+        }  
+    }
+
+    function add_favs(id, token) {
+        services.post('shop', 'control_likes', {id: id, token: token})
+        .then(function(response) {
+           console.log(response);
+        }, function(error) {
+            console.log(error);
+        });
     }
 
 }]);
