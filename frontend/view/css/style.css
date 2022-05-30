@@ -1319,7 +1319,7 @@ li.ng-scope.active {
 .forget {
     display: block;
     width: 300px;
-    height: 200px;
+    height: 250px;
     margin: auto;
     text-align: center;
     border-style: solid;
@@ -1380,8 +1380,8 @@ li.ng-scope.active {
 
 .recover {
     display: block;
-    width: 300px;
-    height: 350px;
+    width: 350px;
+    height: 400px;
     margin: auto;
     text-align: center;
     border-style: solid;

@@ -66,11 +66,8 @@
             return $db->listar($stmt);
         }
 
-        
-
-
         public function update_recover_password($db, $email, $token_email){
-			$sql = "UPDATE `users` SET `token_email`= '$token_email' WHERE `email` = '$email'";
+			$sql = "UPDATE `users` SET `token_email` = '$token_email' WHERE `email` = '$email'";
             $stmt = $db->ejecutar($sql);
             return "ok";
         }
@@ -80,9 +77,6 @@
             $stmt = $db->ejecutar($sql);
             return "ok";
         }
-
-
-
 
         public function select_data_user($db, $username){
 

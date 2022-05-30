@@ -1,4 +1,4 @@
-<div class="login-wrap" >
+<div class="login-wrap" ng-show="show_login">
 	<div class="login-html">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
@@ -52,7 +52,7 @@
 					</div>
 					<div class="hr"></div>
 					<div class="foot-lnk">
-						<label id="forget_pass">Forgot Password?</label>
+						<a id="recover_password" href="#/recover">Forgot password?</a>
 					</div>
 				</div>
 			</form>
@@ -123,49 +123,67 @@
 </div>
 
 <div class="forget_html" ng-show="show_forget_password">
-	<form id="recover_email_form" method="post">
+	<form name="recover_email_form" id="recover_email_form" method="post">
 		<h1>Recover Password</h1>
 		<div class="forget">
 			<div class="email_recover">
-				<label for="email_forg" class="label">Email Address: </label>
+				<label for="email_forg" class="label_forg">Email Address: </label>
 				<br>
-				<input id="email_forg" name="email_forg" type="text" class="input" placeholder="example@gmail.com">
+				<input id="email_forg" name="email_forg" type="text" ng-model="email_forg" class="input" placeholder="example@gmail.com" ng-pattern="regex_email" required>
 				<font color="red">
 					<br>
-					<span id="error_email_forg" class="error"></span>
+					<span class="error" ng-show="recover_email_form.email_forg.$error.required && recover_email_form.email_forg.$touched">
+						You have to write an email. <br>
+					</span>
+					<span class="error" ng-show="recover_email_form.email_forg.$dirty && recover_email_form.email_forg.$invalid">
+						The email format is invalid.
+					</span>
+					<span class="error" ng-show="exists_email">
+						The email doesn't exist.
+					</span>
 				</font>
 			</div>
 			<div class="button_forget">
-				<input type="button" class="button" id="button_recover" value="Send email">
+				<input type="button" class="button" id="button_recover" value="Send email" ng-click="recover_password()">
 			</div>
 		</div>
 	</form>
 </div>
 
 <div class="recover_html" ng-show="show_recover_password">
-	<form id="recover_pass_form" method="post">
+	<form id="recover_pass_form" name="recover_pass_form" method="post">
 		<h1>Recover Password</h1>
 		<div class="recover">
 			<div class="password_recover">
-				<label for="pass_rec" class="label">Password: </label>
+				<label for="pass_rec" class="label_rec">Password: </label>
 				<br>
-				<input id="pass_rec" name="pass_rec" type="password" class="input">
+				<input id="pass_rec" name="pass_rec" type="password" class="input" ng-model="pass_rec" ng-pattern="regex_password" required>
 				<font color="red">
 					<br>
-					<span id="error_password_rec" class="error"></span>
+					<span class="error" ng-show="recover_pass_form.pass_rec.$error.required && recover_pass_form.pass_rec.$touched">
+						You have to write a password. <br>
+					</span>
+					<span class="error" ng-show="recover_pass_form.pass_rec.$dirty && recover_pass_form.pass_rec.$invalid">
+						The password must be between 5 and 20 characters.
+					</span>
 				</font>
 			</div>
             <div class="password_recover_2">
-				<label for="pass_rec_2" class="label">Repeat Password: </label>
+				<label for="pass_rec_2" class="label_rec">Repeat Password: </label>
 				<br>
-				<input id="pass_rec_2" name="pass_rec_2" type="password" class="input">
+				<input id="pass_rec_2" name="pass_rec_2" type="password" class="input" ng-model="pass_rec_2" required>
 				<font color="red">
 					<br>
-					<span id="error_password_rec_2" class="error"></span>
+					<span class="error" ng-show="recover_pass_form.pass_rec_2.$error.required && recover_pass_form.pass_rec_2.$touched">
+						You have to write a password. <br>
+					</span>
+					<span class="error" ng-show="pass_equal_rec" >
+						Passwords don't match.
+					</span>
 				</font>
 			</div>
 			<div class="button_forget">
-				<input type="button" class="button" id="button_set_pass" value="Set password">
+				<input type="button" class="button" id="button_set_pass" value="Set password" ng-click="new_password()" ng-disabled = "recover_pass_form.pass_rec.$invalid">
 			</div>
 		</div>
 	</form>

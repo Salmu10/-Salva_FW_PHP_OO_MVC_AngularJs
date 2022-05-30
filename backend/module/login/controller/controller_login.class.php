@@ -11,8 +11,8 @@
 
         function social_login() {
             echo json_encode(common::load_model('login_model', 'get_social_login', $_POST['profile']));
-        } 
-    
+        }
+
         function verify_email() {
             echo json_encode(common::load_model('login_model', 'get_verify_email', $_POST['token_email']));
         }

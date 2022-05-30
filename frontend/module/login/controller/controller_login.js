@@ -32,6 +32,24 @@ app.controller('controller_login', function($scope, $route, $rootScope, services
         services_social_login.github();
     };
 
+    $scope.recover_password = function(){
+        if($scope.email_forg != undefined){
+            services_login.recover_password($scope.email_forg);
+        }
+    }
+
+    $scope.new_password = function(){
+        if ($scope.pass_rec != $scope.pass_rec_2) {
+            $scope.pass_equal_rec = true;
+        } else {
+            $scope.pass_equal_rec = false;
+            console.log($scope.pass_rec);
+            if($scope.pass_rec != undefined){
+                services_login.verify_token($route.current.params.token, $scope.pass_rec);
+            }
+        }
+    }
+
     let path = $route.current.originalPath.split('/');
     if(path[1] === 'login') {
         $scope.show_login = true;
@@ -40,6 +58,14 @@ app.controller('controller_login', function($scope, $route, $rootScope, services
         services_login.logout();
     }else if (path[1] === 'verify') {
         services_login.verify_email($route.current.params.token);
-    }
+    }else if(path[1] === 'recover'){
+        if($route.current.params.token){
+            $scope.show_recover_password = true;
+            $scope.show_login, $scope.show_forget_password = false;
+        }else{
+            $scope.show_forget_password = true;
+            $scope.show_login, $scope.show_recover_password = false;
+        }
+    } 
 
 });

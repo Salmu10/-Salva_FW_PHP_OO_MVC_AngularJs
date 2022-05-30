@@ -1,5 +1,5 @@
 app.factory('services_login', ['services', 'services_localstorage', '$rootScope', 'toastr', function(services, services_localstorage, $rootScope, toastr) {
-    let service = {login: login, logout: logout, register: register, verify_email: verify_email};
+    let service = {login: login, logout: logout, register: register, verify_email: verify_email, recover_password: recover_password, verify_token: verify_token, new_password: new_password};
     return service;
     
     function login(username, password) {
@@ -64,13 +64,60 @@ app.factory('services_login', ['services', 'services_localstorage', '$rootScope'
         services.post('login', 'verify_email', {token_email: token})
         .then(function(response) {
             result = JSON.parse(response);
-            console.log(result);
             if(result == "fail"){
                 toastr.error("Something went wrong");
             } else {
                 toastr.success('Email verified');
                 location.href = "#/login/";
                 return;
+            }
+        }, function(error) {
+            console.log(error);
+        });
+    }
+
+    function recover_password(email) {
+        services.post('login', 'send_recover_email', {email_forg: email})
+        .then(function(response) {
+            result = JSON.parse(response);
+            if(result == "error"){
+                $rootScope.exists_email = true;	
+            } else{
+                $rootScope.exists_email = false;
+                toastr.success("Email sended");
+                location.href = "#/login/";
+                return;
+            }
+        }, function(error) {
+            console.log(error);
+        });
+    }
+
+    function verify_token(token_email, password) {
+        new_pass = password;
+        services.post('login', 'verify_token', {token_email: token_email})
+        .then(function(response) {
+            result = JSON.parse(response);
+            if(result == "verify"){
+                new_password(token_email, new_pass);
+            }else {
+                console.log("error");
+            }
+        }, function(error) {
+            console.log(error);
+        });
+    }
+
+    function new_password(token_email, password) {
+        services.post('login', 'new_password', {token_email: token_email, password: password})
+        .then(function(response) {
+            result = JSON.parse(response);
+            if(result == "done"){
+                toastr.success('New password changed');
+                location.href = "#/login ";
+                return;
+            } else {
+                toastr.error('Error seting new password');
             }
         }, function(error) {
             console.log(error);
