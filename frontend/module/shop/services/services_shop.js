@@ -29,8 +29,7 @@ app.factory('services_shop', ['services', '$rootScope', 'services_maps', functio
 
         // localStorage.removeItem('filters');
 
-        angular.forEach(filt.type_name, function (key) {
-            console.log(filt.type_name[key]);
+        angular.forEach(filt.type_name, function (value, key) {
             if (filt.type_name[key].checked) {
                 type_name.push(filt.type_name[key].type_name);
             }
@@ -154,6 +153,7 @@ app.factory('services_shop', ['services', '$rootScope', 'services_maps', functio
             var el = angular.element(document.querySelector('#load_more_button'));
             el.remove();
         }
+        load_favs();
     }
 
     function visits(id) {

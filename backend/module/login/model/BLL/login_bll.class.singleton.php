@@ -45,7 +45,7 @@
 			if (!empty($this -> dao -> select_user($this->db, $args[0], $args[0]))) {
 				$user = $this -> dao -> select_user($this->db, $args[0], $args[0]);
 				if (password_verify($args[1], $user[0]['password']) && $user[0]['activate'] == 1) {
-					$jwt = jwt_process::encode($user[0]['username']);
+					$jwt = middleware::encode($user[0]['username']);
 					$_SESSION['username'] = $user[0]['username'];
 					$_SESSION['tiempo'] = time();
                     session_regenerate_id();
@@ -64,12 +64,12 @@
 
 			if (!empty($this -> dao -> select_user($this->db, $args['username'], $args['email']))) {
 				$user = $this -> dao -> select_user($this->db, $args['username'], $args['email']);
-				$jwt = jwt_process::encode($user[0]['username']);
+				$jwt = middleware::encode($user[0]['username']);
 				return $jwt;
             } else {
 				$this -> dao -> insert_social_login($this->db, $args['id'], $args['username'], $args['email'], $args['avatar']);
 				$user = $this -> dao -> select_user($this->db, $args['username'], $args['email']);
-				$jwt = jwt_process::encode($user[0]['username']);
+				$jwt = middleware::encode($user[0]['username']);
 				return $jwt;
 			}
 		}
@@ -161,7 +161,7 @@
 			$decode = middleware::decode_username($token[1]);
 			$user = $this -> dao -> select_user($this->db, $decode, $void_email);
 
-			$new_token = jwt_process::encode($user[0]['username']);
+			$new_token = middleware::encode($user[0]['username']);
 
             return $new_token;
 		}

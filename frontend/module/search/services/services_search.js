@@ -11,10 +11,9 @@ app.factory('services_search', ['services', '$rootScope', function(services, $ro
        }); 
     }
 
-    function search_car_brand(car_type = undefined) {
+    function search_car_brand(car_type = 1) {
         services.post('search', 'car_brand', {car_type: car_type})
         .then(function(response) {
-            // console.log(response);
             $rootScope.car_brand = response;
         }, function(error) {
             console.log(error);
@@ -22,8 +21,9 @@ app.factory('services_search', ['services', '$rootScope', function(services, $ro
     }
 
     function search_autocomplete(car_type = undefined, car_brand = undefined, autocomplete) {
+        auto = {car_type: car_type, car_brand: car_brand, complete: autocomplete};
         if(autocomplete != ""){
-            services.post('search', 'autocomplete', {car_type: car_type, car_brand: car_brand, complete: autocomplete})
+            services.post('search', 'autocomplete', {auto: auto})
             .then(function(response) {
                 $rootScope.complete = response;
             }, function(error) {
@@ -35,18 +35,16 @@ app.factory('services_search', ['services', '$rootScope', function(services, $ro
     }
 
     function search(car_type = undefined, car_brand = undefined, complete) {
-        console.log('Hola');
+
         if(car_type || car_brand || complete != undefined && complete != ""){
             var filters = [];
         }
         
         if(car_type){
-            // console.log(car_type);
-            // filters.push({key: "car_type", value: [car_type]});
+
             filters.push({"type_name": [car_type]});
         }
         if(car_brand){
-            // filters.push({key: "brand_name", value: [car_brand]});
             filters.push({"brand_name": [car_brand]});
         }
         if(complete != undefined && complete != ""){ 

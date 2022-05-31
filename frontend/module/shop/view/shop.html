@@ -40,9 +40,9 @@
                             <h4>{{car.color}} - {{car.license_number}} - {{car.car_plate}}</h4>
                         </div>
                     </div>
-                    <div class='list_heart' id='{{car.id}}' ng-click="add_favs()">
+                    <!-- <div class='list_heart' id='{{car.id}}' ng-click="add_favs()">
                         <i id='like' class='bx {{car.favs_class}}'></i>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -71,9 +71,11 @@
                                 <tr><th class='attributes'>{{car.color}}</th><th class='attributes_2'>{{car.car_plate}}</th></tr>
                             </table>
                         </div>
-                        <!-- <div class='like_details'>
-                            <div class='list_heart' id='"+ data[0][0].id +"'><i id='like' class='bx bx-heart'></i></div>
-                        </div> -->
+                        <div class='like_details'>
+                            <div class='list_heart' id='{{car.id}}' ng-click="add_favs()">
+                                <i id='like' class='bx {{car.favs_class}}'></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class='back_content'>
@@ -103,9 +105,11 @@
                                         <h2 class='category_title'>{{car.brand_name}} {{car.model}}</h2>
                                     </div>
                                 </div>
-                                <!-- <div class='like_related'>
-                                    <div class='list_heart' id='"+ data[row].id +"'><i id='like' class='bx bx-heart'></i></div>
-                                </div> -->
+                                <div class='like_related'>
+                                    <div class='list_heart' id='{{car.id}}' ng-click="add_favs()">
+                                        <i id='like' class='bx {{car.favs_class}}'></i>
+                                    </div>
+                                </div>
                             </section>
                         </div>
                     </div>

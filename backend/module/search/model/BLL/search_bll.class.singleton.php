@@ -20,30 +20,24 @@
 			return $this -> dao -> select_car_type($this->db);
 		}
 
-		public function get_car_brand_BLL() {
-			return $this -> dao -> select_car_brand($this->db);
+		public function get_car_brand_BLL($args) {
+			if($args == 1){
+				return $this -> dao -> select_car_brand($this->db);
+            }else{
+				return $this -> dao -> select_car_type_brand($this->db, $args);
+            }
 		}
 
-        public function get_car_type_brand_BLL($args) {
-			return $this -> dao -> select_car_type_brand($this->db, $args);
-		}
-
-		public function get_auto_car_type_BLL($args) {
-            // return ($args[1]);
-			return $this -> dao -> select_auto_car_type($this->db, $args[0], $args[1]);
-		}
-
-        public function get_auto_car_brand_BLL($args) {
-			return $this -> dao -> select_auto_car_brand($this->db, $args[0], $args[1]);
-		}
-
-        public function get_auto_car_type_brand_BLL($args) {
-			return $this -> dao -> select_auto_car_type_brand($this->db, $args[0], $args[1], $args[2]);
-		}
-
-        public function get_auto_BLL($args) {
-			return $this -> dao -> select_auto($this->db, $args);
-		}
-		
+        public function get_autocomplete_BLL($args) {
+            if (!empty($args['car_type']) && empty($args['car_brand'])){
+                return $this -> dao -> select_auto_car_type($this->db, $args['car_type'], $args['car_brand']);
+            }else if(empty($args['car_type']) && !empty($args['car_brand'])){
+				return $this -> dao -> select_auto_car_brand($this->db, $args['car_brand'], $args['complete']);
+            }else if(!empty($args['car_type']) && !empty($args['car_brand'])){
+				return $this -> dao -> select_auto_car_type_brand($this->db, $args['car_type'], $args['car_brand'], $args['complete']);
+            }else {
+				return $this -> dao -> select_auto($this->db, $args['complete']);
+            }
+		}		
 	}
 ?>
