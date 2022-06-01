@@ -70,7 +70,7 @@ app.config(['$routeProvider', function($routeProvider) {
         });
 }]);
 
-app.run(function($rootScope, services, services_search){
+app.run(function($rootScope, services, services_search, services_secure_login){
 
     if(localStorage.token){
         $rootScope.menu = true;
@@ -78,6 +78,11 @@ app.run(function($rootScope, services, services_search){
         $rootScope.menu = false;
     }
     
+    services_secure_login.protecturl();
+    services_secure_login.protect_activity();
+    services_secure_login.token_expires();
+    services_secure_login.refresh_token();
+    services_secure_login.refresh_session();
     services_search.search_car_type();
     services_search.search_car_brand();
 

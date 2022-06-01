@@ -1789,7 +1789,7 @@ input::-moz-focus-inner {
 	}
 
 		ul.menu li {
-			border-left: solid 1px #e0e0e0;
+			/* border-left: solid 1px #e0e0e0; */
 			display: inline-block;
 			padding: 0 0 0 0.75em;
 			margin: 0 0 0 0.75em;
@@ -2162,6 +2162,7 @@ input::-moz-focus-inner {
 
 	#footer {
 		margin-top: 50px;
+		margin-bottom: 50px;
 	}
 
 		#footer a {

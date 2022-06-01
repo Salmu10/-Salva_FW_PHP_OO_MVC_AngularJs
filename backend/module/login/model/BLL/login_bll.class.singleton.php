@@ -141,10 +141,11 @@
 
 		public function get_controluser_BLL($args) {
 
-			$token = explode('"', $args);
 			$void_email = "";
-			$decode = middleware::decode_username($token[1]);
+			$decode = middleware::decode_username($args);
 			$user = $this -> dao -> select_user($this->db, $decode, $void_email);
+
+			// return $_SESSION['username'];
 
 			if (!isset ($_SESSION['username']) != $user){
 				if(isset ($_SESSION['username']) != $user) {
@@ -156,9 +157,8 @@
 
 		public function get_refresh_token_BLL($args) {
 
-			$token = explode('"', $args);
 			$void_email = "";
-			$decode = middleware::decode_username($token[1]);
+			$decode = middleware::decode_username($args);
 			$user = $this -> dao -> select_user($this->db, $decode, $void_email);
 
 			$new_token = middleware::encode($user[0]['username']);
@@ -168,9 +168,8 @@
 
 		public function get_token_expires_BLL($args) {
 
-			$token = explode('"', $args);
-			$decode = middleware::decode_exp($token[1]);
-			
+			$decode = middleware::decode_exp($args);
+
             if(time() >= $decode) {  
 				return "inactivo"; 
 			} else{
