@@ -1,5 +1,7 @@
 app.controller('controller_home', function($scope, $window, carrusel, category, news, books, type) { 
 
+
+  // localStorage.removeItem('token');
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
     $scope.active = 0;

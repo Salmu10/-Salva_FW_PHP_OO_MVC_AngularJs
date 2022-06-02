@@ -50,6 +50,9 @@ app.config(['$routeProvider', function($routeProvider) {
         }).when("/logout", {
             templateUrl: "frontend/module/login/view/login.html", 
             controller: "controller_login"
+        }).when("/profile", {
+            templateUrl: "frontend/module/login/view/login.html", 
+            controller: "controller_login"
         }).when("/verify/:token", {
             templateUrl: "frontend/module/login/view/login.html", 
             controller: "controller_login"

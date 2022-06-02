@@ -120,9 +120,7 @@
 		}
 
 		public function get_data_user_BLL($args) {
-
-			$token = explode('"', $args);
-			$decode = middleware::decode_username($token[1]);
+			$decode = middleware::decode_username($args);
 			return $this -> dao -> select_data_user($this->db, $decode);
 		}
 

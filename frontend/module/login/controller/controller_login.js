@@ -54,6 +54,8 @@ app.controller('controller_login', function($scope, $route, $rootScope, services
     if(path[1] === 'login') {
         $scope.show_login = true;
         $scope.show_forget_password, $scope.show_recover_password = false;
+    }else if(path[1] === 'profile') {
+        services_login.profile();
     }else if(path[1] === 'logout') {
         services_login.logout();
     }else if (path[1] === 'verify') {

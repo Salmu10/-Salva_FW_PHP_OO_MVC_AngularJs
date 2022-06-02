@@ -16,7 +16,24 @@
 					<li><a href="#/shop" id="shop" data-tr="Shop">Shop</a></li>
 					<li><a href="#/contact" id="contact" data-tr="Contact us">Contact us</a></li>
 					<li><a href="#/login" ng-if="menu == false" id="login" data-tr="Login">Login</a></li>
-					<li><a href="#/logout" ng-if="menu == true" id="logout" data-tr="Logout">Logout</a></li>
+					<li><a href="#/profile" ng-if="menu == true" id="profile" data-tr="Profile">Profile</a></li>
+				</ul>
+				<ul class="nav_list_profile" ng-show="profile_menu">
+					<div class="profile_options" id="profile_options" ng-repeat="data in profile_data">
+						<ul class='profile_list' id='profile_list'>
+							<li>
+								<div class='user_img'>
+									<img class='avatar_img' src='{{data.avatar}}'>
+								</div> 
+								<div class='user_name'>{{data.username}}</div>
+							</li>
+							<li>
+								<div id='logout' class='logout' data-tr='Log out'>
+									<a href="#/logout" class="log_out" id="logout" data-tr="Logout">Logout</a>
+								</div>
+							</li>
+						</ul>
+					</div>
 				</ul>
 			</nav>
 
