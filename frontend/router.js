@@ -83,6 +83,7 @@ app.run(function($rootScope, services, services_search, services_secure_login){
     services_secure_login.token_expires();
     services_secure_login.refresh_token();
     services_secure_login.refresh_session();
+    
     services_search.search_car_type();
     services_search.search_car_brand();
 

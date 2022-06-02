@@ -3,19 +3,23 @@ app.factory('services_secure_login', ['services', '$rootScope', 'services_login'
     return service;
 
     function protecturl() {
-        var token = localStorage.getItem('token');
-        services.post('login', 'controluser', {token: token})
-        .then(function(response) {
-            result = JSON.parse(response);
-            if (result == "match"){
-                console.log(result);
-            }else if (result == "not_match"){
-                toastr.error("Debes realizar login");
-                services_login.log_out();
-            }
-        }, function(error) {
-            console.log(error);
-        });
+        if(localStorage.getItem('token') == null){
+            console.log('Not registred');
+        } else {
+            var token = localStorage.getItem('token');
+            services.post('login', 'controluser', {token: token})
+            .then(function(response) {
+                result = JSON.parse(response);
+                if (result == "match"){
+                    console.log(result);
+                }else if (result == "not_match"){
+                    toastr.error("Debes realizar login");
+                    services_login.logout();
+                }
+            }, function(error) {
+                console.log(error);
+            });
+        }
     }
 
     function protect_activity() {
@@ -25,7 +29,7 @@ app.factory('services_secure_login', ['services', '$rootScope', 'services_login'
                 result = JSON.parse(response);
 				if(result == "inactivo"){
 					toastr.error("Tiempo agotado, porfavor inicie sesión de nuevo");
-                    services_login.log_out();
+                    services_login.logout();
 				}
             }, function(error) {
                 console.log(error);
@@ -46,7 +50,7 @@ app.factory('services_secure_login', ['services', '$rootScope', 'services_login'
                         console.log(result);
                     }else if (result == "inactivo"){
                         toastr.error("Tiempo agotado, porfavor inicie sesión de nuevo");
-                        services_login.log_out();
+                        services_login.logout();
                     }	
                 }, function(error) {
                     console.log(error);
@@ -56,15 +60,19 @@ app.factory('services_secure_login', ['services', '$rootScope', 'services_login'
     }
 
     function refresh_token() {
-        var token = localStorage.getItem('token');
         setInterval(function() {
-            services.post('login', 'refresh_token', {token: token})
-            .then(function(response) {
-                result = JSON.parse(response);
-                localStorage.setItem('token', result);
-            }, function(error) {
-                console.log(error);
-            });
+            if(localStorage.getItem('token') == null){
+                console.log('Not registred');
+            } else {
+                var token = localStorage.getItem('token');
+                services.post('login', 'refresh_token', {token: token})
+                .then(function(response) {
+                    result = JSON.parse(response);
+                    localStorage.setItem('token', result);
+                }, function(error) {
+                    console.log(error);
+                });
+            }
         }, 600000);
     }
 
