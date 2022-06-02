@@ -1,4 +1,4 @@
-app.controller('controller_home', function($scope, $window, carrusel, category, type) { 
+app.controller('controller_home', function($scope, $window, carrusel, category, news, books, type) { 
 
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
@@ -7,6 +7,40 @@ app.controller('controller_home', function($scope, $window, carrusel, category, 
     $scope.slide = carrusel;
     $scope.categoria = category;
     $scope.tipo = type;
+
+    var news_array = [];
+    var cont = 3;
+
+    news.items.forEach(news => {
+      if (news.volumeInfo) {
+          const const_news = {
+              'title': news.volumeInfo.title,
+              'thumbnail': news.volumeInfo.imageLinks.thumbnail,
+              'description': news.volumeInfo.description,
+              'link': news.accessInfo.webReaderLink
+          }
+          news_array.push(const_news);
+      }
+    });
+
+    $scope.MoreNews = function() {
+
+      cont = cont + 2;
+      
+      if (news_array != undefined) {
+        total_news = news_array;
+      }
+
+      $scope.news_scope = total_news.slice(0, cont);
+    
+      if (cont >= 10) {
+        var el = angular.element(document.querySelector('#load_news_button'));
+        el.remove();
+        $scope.no_more_news = true;
+      }
+    }
+
+    $scope.news_scope = news_array.slice(0, cont);
 
     // for(row in category){
     //   var content_array = [];

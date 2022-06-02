@@ -992,7 +992,7 @@ li.ng-scope.active {
     margin: auto;
 }
 
-#load_more_button {
+#load_more_button, #load_news_button {
     display: block;
     margin: auto;
     margin-top: 5%;
@@ -1010,7 +1010,7 @@ li.ng-scope.active {
     background-color: #fff;
 }
 
-#load_more_button:hover {
+#load_more_button:hover, #load_news_button:hover {
     background: rgb(192, 192, 192);
 }
 
@@ -1031,20 +1031,15 @@ li.ng-scope.active {
 /* News */
 
 .news_container {
-    row-gap: 2.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    display: grid;
-    gap: 1.5rem;
+    display: inline-block;
 }
-  
-/* .services__container{
-    row-gap: 2.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-*/
 
-.news_content{
+#news_content{
     text-align: center;
+    display: block;
+    margin-left: 58px;
+    margin-right: 58px;
+    margin-top: 50px;
 }
   
 .news_img{
@@ -1054,20 +1049,20 @@ li.ng-scope.active {
     margin-bottom: var(--mb-2);
 }
 
-.news_title{
-    font-size: var(--h3-font-size);
-    color: var(--title-color);
-    margin-bottom: var(--mb-1);
+#list_header {
+    margin-top: -20px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 650;
+}
+
+#no_more {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 15px;
 }
 
 /* Log in */
-
-/* body{
-	margin:0;
-	color:#6a6f8c;
-	background:#c8c8c8;
-	font: 600 16px/18px 'Open Sans',sans-serif;
-} */
 
 *, :after, :before {
     box-sizing: border-box;

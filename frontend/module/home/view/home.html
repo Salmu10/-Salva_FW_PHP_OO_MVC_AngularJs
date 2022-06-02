@@ -57,12 +57,36 @@
     </div>
 </div>
 
-<!-- News -->
-<!-- <div class="news">
-    <h1 data-tr="News"></h2>
-    <div class="news_container" id="news_container"></div>
-    <div class="no_more" id="no_more"></div>
-    <div class="load_more">
-        <button class="load_more_button" id="load_more_button">Load More</button>
+<!-- <div id="featured">
+    <div id="prueba" ng-repeat="news in news_scope">
+        <br>
+        <div id='cont_img'><img src='{{news.thumbnail}}' class='cart' data-toggle='modal' data-target='#exampleModal'></div>
+        <div id='list_header'><span id='li_brand'> {{news.title}} </br></span></div>
+
     </div>
+</div>
+
+<div class="moreBook">
+    <a class="estado link moreBook" ng-click="MoreNews()"><span><span>More Books</span></span></a>
 </div> -->
+
+<!-- News -->
+<div class="news">
+    <h1 data-tr="News">Books</h2>
+    <div class="news_container" id="news_container" ng-repeat="news in news_scope">
+        <div id="news_content" class="news_content">
+            <div id='cont_img'>
+                <img src='{{news.thumbnail}}' class='cart' data-toggle='modal' data-target='#exampleModal'>
+            </div>
+            <div id='list_header'>
+                <hr>
+                <span id='li_brand'>{{news.title}}</br></span>
+            </div>
+            </hr>
+        </div>
+    </div>
+    <div class="no_more" id="no_more" ng-show="no_more_news"><h2>No more books</h2></div>
+    <div class="load_more">
+        <button class="load_news_button" id="load_news_button" ng-click="MoreNews()">Load More</button>
+    </div>
+</div>

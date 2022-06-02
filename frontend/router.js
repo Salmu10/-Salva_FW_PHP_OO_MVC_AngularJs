@@ -15,6 +15,12 @@ app.config(['$routeProvider', function($routeProvider) {
                 },
                 type: function (services) {
                     return services.get('home','type');
+                },
+                news: function(services) {
+                    return services.get_api('https://www.googleapis.com/books/v1/volumes?q=car');
+                },
+                books: function(services) {
+                    return services.get_api('https://www.googleapis.com/books/v1/volumes?q=car');
                 }
             }
         }).when("/shop", {
