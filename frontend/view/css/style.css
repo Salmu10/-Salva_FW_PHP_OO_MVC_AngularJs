@@ -294,6 +294,10 @@ li.ng-scope.active {
     background-image: -webkit-linear-gradient(right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);;
 }
 
+.carousel-indicators {
+    margin-bottom: -30px;
+}
+
 /* Categories */
 
 .category_title {

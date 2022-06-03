@@ -16,7 +16,7 @@
 					<li><a href="#/shop" id="shop" data-tr="Shop">Shop</a></li>
 					<li><a href="#/contact" id="contact" data-tr="Contact us">Contact us</a></li>
 					<li><a href="#/login" ng-if="menu == false" id="login" data-tr="Login">Login</a></li>
-					<li><a href="#/profile" ng-if="menu == true" id="profile" data-tr="Profile">Profile</a></li>
+					<li><a href="" ng-if="menu == true" id="profile" data-tr="Profile" ng-click="profile()">Profile</a></li>
 				</ul>
 				<ul class="nav_list_profile" ng-show="profile_menu">
 					<div class="profile_options" id="profile_options" ng-repeat="data in profile_data">
@@ -55,7 +55,10 @@
 
 					<input type="button" value="Search" id="search_button" ng-click="click_search(selected_car_type, selected_car_brand, autocomplete)"/>
 
-					<div id="search_auto" ng-click="click_search(selected_car_type, selected_car_brand, com.city)" ng-repeat="com in complete">{{com.city}}</div>
+					<div class="auto_search" ng-show="cities">
+						<div id="search_auto" ng-repeat="com in complete">{{com.city}}</div>
+                    </div>
+
 				</form>
 			</div>
 

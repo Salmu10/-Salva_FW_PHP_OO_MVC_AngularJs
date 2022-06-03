@@ -1,5 +1,5 @@
 app.factory('services_login', ['services', 'services_localstorage', 'services_shop', '$rootScope', 'toastr', function(services, services_localstorage, services_shop, $rootScope, toastr) {
-    let service = {login: login, logout: logout, profile: profile, register: register, verify_email: verify_email, recover_password: recover_password, verify_token: verify_token, new_password: new_password};
+    let service = {login: login, logout: logout, register: register, verify_email: verify_email, recover_password: recover_password, verify_token: verify_token, new_password: new_password};
     return service;
     
     function login(username, password) {
@@ -39,18 +39,6 @@ app.factory('services_login', ['services', 'services_localstorage', 'services_sh
         services_localstorage.clearSession();
         location.href = "#/home/";
         window.location.reload();
-    }
-
-    function profile() { 
-        location.href = "#/home/";
-        var token = localStorage.getItem('token');
-        services.post('login', 'data_user', {token: token})
-        .then(function(response) {
-            $rootScope.profile_menu = true;
-            $rootScope.profile_data = response;
-        }, function(error) {
-            console.log(error);
-        });
     }
 
     function register(username_reg, pass_reg, email_reg) {

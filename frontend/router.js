@@ -47,9 +47,6 @@ app.config(['$routeProvider', function($routeProvider) {
         }).when("/logout", {
             templateUrl: "frontend/module/login/view/login.html", 
             controller: "controller_login"
-        }).when("/profile", {
-            templateUrl: "frontend/module/login/view/login.html", 
-            controller: "controller_login"
         }).when("/verify/:token", {
             templateUrl: "frontend/module/login/view/login.html", 
             controller: "controller_login"
@@ -85,6 +82,25 @@ app.run(function($rootScope, services, services_search, services_secure_login){
         $rootScope.menu = true;
     }else{
         $rootScope.menu = false;
+    }
+
+    $rootScope.ClickBody = function() {
+        if ($rootScope.profile_menu == true)  {
+            $rootScope.profile_menu = false;
+        } else if ($rootScope.cities == true)  {
+            $rootScope.cities = false;
+        }
+    }
+
+    $rootScope.profile = function() {
+        var token = localStorage.getItem('token');
+        services.post('login', 'data_user', {token: token})
+        .then(function(response) {
+            $rootScope.profile_menu = true;
+            $rootScope.profile_data = response;
+        }, function(error) {
+            console.log(error);
+        });
     }
     
     services_secure_login.protecturl();

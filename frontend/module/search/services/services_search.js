@@ -25,6 +25,7 @@ app.factory('services_search', ['services', '$rootScope', function(services, $ro
         if(autocomplete != ""){
             services.post('search', 'autocomplete', {auto: auto})
             .then(function(response) {
+                $rootScope.cities = true;
                 $rootScope.complete = response;
             }, function(error) {
                 console.log(error);
