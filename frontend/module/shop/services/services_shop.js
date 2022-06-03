@@ -179,23 +179,25 @@ app.factory('services_shop', ['services', '$rootScope', 'services_maps', functio
     function change_page(page) {
         $rootScope.show1 = true;
         $rootScope.show2 = true;
-
         $rootScope.current_page = page;
         $rootScope.list =  $rootScope.cars.slice((($rootScope.current_page - 1) * 5), (($rootScope.current_page) * 5));
+        window.scrollTo(0, 0);
+
         if(page >= $rootScope.total_page ){
             $rootScope.show2 = false;
         } 
         if(page <= 1){
             $rootScope.show1 = false;
         }
+
         load_favs();
     }
 
     function load_favs() {
         if(localStorage.token){
+            localStorage.removeItem('likes');
             services.post('shop', 'load_likes', {token: localStorage.token})
             .then(function(response) {
-                console.log(response);
                 for(row in $rootScope.list){
                     $rootScope.list[row].favs_class = "bx-heart";
                     var car = $rootScope.list[row];

@@ -1,4 +1,4 @@
-app.factory('services_login', ['services', 'services_localstorage', '$rootScope', 'toastr', function(services, services_localstorage, $rootScope, toastr) {
+app.factory('services_login', ['services', 'services_localstorage', 'services_shop', '$rootScope', 'toastr', function(services, services_localstorage, services_shop, $rootScope, toastr) {
     let service = {login: login, logout: logout, profile: profile, register: register, verify_email: verify_email, recover_password: recover_password, verify_token: verify_token, new_password: new_password};
     return service;
     
@@ -19,15 +19,16 @@ app.factory('services_login', ['services', 'services_localstorage', '$rootScope'
                 $rootScope.wrong_password = false;
                 services_localstorage.setSession(result);
                 toastr.success("Log in successfully");
-                location.href = "#/home/";
-                window.location.reload();
+                if(localStorage.getItem('likes') == null) {
+                    location.href = "#/home/";
+                    window.location.reload();
+                } else {
+                    // page = localStorage.getItem('page');
+                    location.href = "#/shop/";
+                    window.location.reload();
+                    // services_shop.change_page(page);
+                }
                 return;
-                // if(localStorage.getItem('likes') == null) {
-                //     setTimeout('window.location.href = friendlyURL("?module=home&op=view")', 1000);
-                // } else {
-                //     console.log(localStorage.getItem('product'));
-                //     setTimeout('window.location.href = friendlyURL("?module=shop&op=view")', 1000);
-                // }
             }	
         }, function(error) {
             console.log(error);

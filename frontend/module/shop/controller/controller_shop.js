@@ -46,6 +46,8 @@ app.controller('controller_shop', function($scope, $rootScope, $route, filters, 
                 this.car.favs_class = "bxs-heart";
             }
         }else{
+            localStorage.setItem('likes', this.car.id);
+            localStorage.removeItem('product');
             location.href = "#/login/";
         }
     }
