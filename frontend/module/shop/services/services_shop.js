@@ -41,7 +41,6 @@ app.factory('services_shop', ['services', '$rootScope', 'services_maps', functio
         angular.forEach(filt.category_name, function (value, key) {
             if (filt.category_name[key].checked) {
                 category_name.push(filt.category_name[key].category_name);
-                console.log(category_name);
             }
         });
         if(category_name.length != 0){

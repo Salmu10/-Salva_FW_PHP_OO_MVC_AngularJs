@@ -1,7 +1,5 @@
 app.controller('controller_home', function($scope, $window, carrusel, category, news, books, type) { 
 
-
-  // localStorage.removeItem('token');
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
     $scope.active = 0;
@@ -43,14 +41,6 @@ app.controller('controller_home', function($scope, $window, carrusel, category, 
     }
 
     $scope.news_scope = news_array.slice(0, cont);
-
-    // for(row in category){
-    //   var content_array = [];
-    //   content = category[row].category_name.replace(/_/g, " ");
-    //   content_array.push({content});
-    //   $scope.categ = content_array;
-    // }
-    // console.log($scope.categ);
 
     $scope.redirect_shop = function(key, value) {
       var filters = [];

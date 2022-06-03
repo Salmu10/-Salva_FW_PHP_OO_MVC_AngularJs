@@ -8,10 +8,8 @@ app.controller('controller_contact', function($scope, services, toastr) {
     $scope.send_contact = function() {
         
         let email = {'name': $scope.contact_name, 'email': $scope.contact_email, 'matter': $scope.matter, 'message': $scope.message};
-        // console.log(email);
         services.post('contact', 'send_contact_us', email)
         .then(function(response) {
-            console.log(response);
             if (response == 'true') {
                 toastr.success('Email sended');
                 $scope.full_name = null;
