@@ -44,6 +44,7 @@ usuario no la recuerde. Consta además, de un social login mediante una cuenta d
   <li>Social login</li>
   <li>Recover password</li>
 </ul>
+<p>Además el login tiene un token mediante JWT en el que va verificando durante el uso de la web si el usuario<br>conectado realmente es él.</p>
  
 <h3>Shop</h3>
 <p>Este es el módulo más importante de toda la web, en el se puede ver la lista de productos del que dispone la<br>
@@ -70,7 +71,7 @@ producto si el usuario se encuentra logeado.</p>
 <ul>
   <li><a href="https://www.php.net/manual/es/intro-whatis.php">PHP:</a> Version 8.0.13</li>
   <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript">JavaScript</a></li>
-  <li><a href="https://jquery.com/">JQuery</a></li>
+  <li><a href="https://angularjs.org/">AngularJS</a></li>
   <li><a href="https://www.phpmyadmin.net/">PhpMyAdmin</a></li>
 </ul>
 
@@ -82,10 +83,11 @@ producto si el usuario se encuentra logeado.</p>
 
 <ul>
   <li><a href="https://codeseven.github.io/toastr/">Toastr</a></li>
+  <li><a href="https://angular-ui.github.io/bootstrap/">UI bootstrap</a></li>
   <li><a href="https://github.com/botmonster/jquery-bootpag">Bootpag</a></li>
-  <li><a href="https://nickpiscitelli.github.io/Glider.js/">Glider.js</a></li>
-  <li><a href="https://kenwheeler.github.io/slick/">Slick</a></li>
+  <li><a href="https://www.mailgun.com/es/">Mailgun</a></li>
   <li><a href="https://www.mapbox.com/">Mapbox</a></li>
   <li><a href="https://boxicons.com/">Boxicons</a></li>
+  <li><a href="https://firebase.google.com/?gclid=CjwKCAjwy_aUBhACEiwA2IHHQJQy7xT1XD6BOGJLrfTesNafAdHO8Z48rGYe4ggyZP-fP4kD4JVZLBoC51wQAvD_BwE&gclsrc=aw.ds">Firebase</a></li>
 </ul>
  
